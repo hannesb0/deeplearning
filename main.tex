@@ -1,0 +1,111 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%																				%%
+%% File name: 		main.tex													%%
+%% Project name:	Applications in Deep Learning								%%
+%% Type of work:	Advanced Seminar											%%
+%% Author:			Hannes Bohnengel											%%
+%% Mentor:			Debayan Roy													%%
+%% Date:			20 May 2017													%%
+%% University:		Technical University of Munich								%%
+%% Comments:		Created in texstudio with tab width = 4						%%
+%%																				%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---- Define document class ------------------------------------------------------
+
+% copied acmart.cls to /usr/share/texlive/texmf-dist/tex
+\documentclass[format=sigconf, review=false, screen=true, timestamp=false, authordraft=false]{acmart}
+
+%---- Define used packages -------------------------------------------------------
+
+\usepackage{booktabs} % For formal tables
+
+\usepackage{tabularx}
+
+%---- Different definitions and macros -------------------------------------------
+
+% Suppress printing of additional info and set page number to true
+\settopmatter{printacmref=false, printccs=false, printfolios=true}
+
+% removes footnote with conference information in first column
+\renewcommand\footnotetextcopyrightpermission[1]{} 
+
+% removes running headers
+\pagestyle{plain}
+
+% Define path of images
+\graphicspath{ {fig/} }
+
+% Metadata Information
+%\acmJournal{TWEB}
+%\acmVolume{9}
+%\acmNumber{4}
+%\acmArticle{39}
+%\acmYear{2010}
+%\acmMonth{3}
+%\copyrightyear{2009}
+%\acmArticleSeq{9}
+
+% Copyright
+\setcopyright{none}
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
+
+% DOI
+%\acmDOI{0000001.0000001}
+
+% Paper history
+\received{June 2017}
+\received[revised]{June 2017}
+\received[accepted]{June 2017}
+
+%---- Begin of document ----------------------------------------------------------
+
+\begin{document}
+	% Title portion. Note the short title for running heads 
+	\title{Impact of Deep Learning on Speech Synthesis with Embedded or Mobile Devices}  
+	\subtitle{Literature Review}
+	\author{Hannes Bohnengel}
+	%\orcid{1234-5678-9012-3456}
+	\affiliation{%
+		\institution{Technical University of Munich}
+		%\streetaddress{104 Jamestown Rd}
+		%\city{Williamsburg}
+		%\state{VA}
+		%\postcode{23185}
+		%\country{USA}
+		}
+	\email{hannes.bohnengel@tum.de}	
+	
+%---- Input abstract text --------------------------------------------------------			
+	
+	\input{doc/abstract.tex}
+
+%---- Input keywords --------------------------------------------------------			
+
+	\keywords{Deep Learning, Deep Neural Network, Embedded System, Mobile Device, Speech Synthesis, Text-to-Speech}
+		
+	\maketitle
+	
+	% The default list of authors is too long for headers}
+	%\renewcommand{\shortauthors}{H.Bohnengel}
+	
+%---- Input main text -------------------------------------------------------------		
+	
+	\input{doc/introduction.tex}
+	
+	\input{doc/body.tex}
+	
+	\input{doc/conclusion.tex}
+	
+	\bibliographystyle{bib/ACM-Reference-Format}
+	\bibliography{bib/bibliography} 
+	
+%---- End of document ------------------------------------------------------------	
+	
+\end{document}
