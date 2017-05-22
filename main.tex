@@ -5,7 +5,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			20 May 2017													%%
+%% Date:			22 May 2017													%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -18,9 +18,12 @@
 
 %---- Define used packages -------------------------------------------------------
 
-\usepackage{booktabs} % For formal tables
+% For formal tables
+\usepackage{booktabs}
 
 \usepackage{tabularx}
+
+\usepackage{blindtext}
 
 %---- Different definitions and macros -------------------------------------------
 
@@ -60,15 +63,15 @@
 %\acmDOI{0000001.0000001}
 
 % Paper history
-\received{June 2017}
-\received[revised]{June 2017}
-\received[accepted]{June 2017}
+%\received{June 2017}
+%\received[revised]{June 2017}
+%\received[accepted]{June 2017}
 
 %---- Begin of document ----------------------------------------------------------
 
 \begin{document}
 	% Title portion. Note the short title for running heads 
-	\title{Impact of Deep Learning on Speech Synthesis with Embedded or Mobile Devices}  
+	\title{Impact of Deep Learning on Speech Synthesis\\ with Embedded or Mobile Devices}  
 	\subtitle{Literature Review}
 	\author{Hannes Bohnengel}
 	%\orcid{1234-5678-9012-3456}
@@ -81,18 +84,26 @@
 		%\country{USA}
 		}
 	\email{hannes.bohnengel@tum.de}	
+
+%---- Adjust some layout stuff ---------------------------------------------------
+	
+	% Paper margins
+	\newgeometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm, footskip=1cm}
+	
+	% Column spacing
+	\setlength{\columnsep}{0.8cm}
 	
 %---- Input abstract text --------------------------------------------------------			
 	
 	\input{doc/abstract.tex}
 
-%---- Input keywords --------------------------------------------------------			
+%---- Input keywords -------------------------------------------------------------			
 
 	\keywords{Deep Learning, Deep Neural Network, Embedded System, Mobile Device, Speech Synthesis, Text-to-Speech}
 		
 	\maketitle
 	
-	% The default list of authors is too long for headers}
+	% If the default list of authors is too long for headers}
 	%\renewcommand{\shortauthors}{H.Bohnengel}
 	
 %---- Input main text -------------------------------------------------------------		
@@ -103,9 +114,11 @@
 	
 	\input{doc/conclusion.tex}
 	
+%---- Input references ------------------------------------------------------------		
+	
 	\bibliographystyle{bib/ACM-Reference-Format}
 	\bibliography{bib/bibliography} 
 	
-%---- End of document ------------------------------------------------------------	
+%---- End of document -------------------------------------------------------------	
 	
 \end{document}
