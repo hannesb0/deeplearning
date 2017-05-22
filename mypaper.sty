@@ -1,0 +1,118 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%																				%%
+%% File name: 		mypaper.sty													%%
+%% Project name:	Applications in Deep Learning								%%
+%% Type of work:	Advanced Seminar											%%
+%% Author:			Hannes Bohnengel											%%
+%% Mentor:			Debayan Roy													%%
+%% Date:			22 May 2017													%%
+%% University:		Technical University of Munich								%%
+%% Comments:		Created in texstudio with tab width = 4						%%
+%%																				%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---- packages -------------------------------------------------------------------
+
+% Provide a package to use in a .tex file
+\ProvidesPackage{myreport}
+
+% For formal tables
+\usepackage{booktabs}
+
+\usepackage{tabularx}
+
+% For abbreviations
+\usepackage{acronym}
+
+% To fill in blind text for formatting purposes
+\usepackage{blindtext}
+
+%\newcommand*{\TITLESEC}{}
+\ifdefined\TITLESEC
+% To amend spacing of titles
+\usepackage{titlesec} 
+\fi
+
+%---- different definitions and macros -------------------------------------------
+
+% Suppress printing of additional info and set page number to true
+\settopmatter{printacmref=false, printccs=false, printfolios=true}
+
+% removes footnote with conference information in first column
+\renewcommand\footnotetextcopyrightpermission[1]{} 
+
+% removes running headers
+\pagestyle{plain}
+
+% Define path of images
+\graphicspath{ {fig/} }
+
+% Metadata Information
+%\acmJournal{TWEB}
+%\acmVolume{9}
+%\acmNumber{4}
+%\acmArticle{39}
+%\acmYear{2010}
+%\acmMonth{3}
+%\copyrightyear{2009}
+%\acmArticleSeq{9}
+
+% Copyright
+\setcopyright{none}
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
+
+% DOI
+%\acmDOI{0000001.0000001}
+
+% Paper history
+%\received{June 2017}
+%\received[revised]{June 2017}
+%\received[accepted]{June 2017}
+
+%\titleformat{\chapter}{\bf\Huge}{\thechapter\quad}{0em}{}
+
+%\titlespacing*{\chapter}{0pt}{-4em}{1.5em}{} %{<left>}{<before>}{<after>}{<right>}
+
+% Format the style of chapter
+%\titleformat%
+%{\chapter}%
+%[block]%
+%{\bfseries\Huge}%
+%{\thechapter\hspace{1cm}}%
+%{0pt}%
+%{\bfseries\Huge}%
+
+\ifdefined\TITLESEC
+% Format the style of section
+\titleformat%
+{\section}%
+[block]%
+{\bfseries\Large}%
+{\thesection\hspace{0.5cm}}%
+{0pt}%
+{\bfseries\Large\uppercase}%
+
+% Format the style of subsection
+\titleformat%
+{\subsection}%
+[block]%
+{\bfseries\large}%
+{\thesubsection\hspace{0.5cm}}%
+{0pt}%
+{\bfseries\large}%
+
+% Set spacing of chapter
+\titlespacing*{\chapter}{0pt}{-4em}{1.5em}{} %{<left>}{<before>}{<after>}{<right>}
+
+% Set spacing of section
+\titlespacing*{\section}{0pt}{1em}{1em}{} %{<left>}{<before>}{<after>}{<right>}
+
+% Set spacing of subsection
+\titlespacing*{\subsection}{0pt}{1.5em}{0.5em}{} %{<left>}{<before>}{<after>}{<right>}
+\fi

@@ -18,54 +18,7 @@
 
 %---- Define used packages -------------------------------------------------------
 
-% For formal tables
-\usepackage{booktabs}
-
-\usepackage{tabularx}
-
-\usepackage{blindtext}
-
-%---- Different definitions and macros -------------------------------------------
-
-% Suppress printing of additional info and set page number to true
-\settopmatter{printacmref=false, printccs=false, printfolios=true}
-
-% removes footnote with conference information in first column
-\renewcommand\footnotetextcopyrightpermission[1]{} 
-
-% removes running headers
-\pagestyle{plain}
-
-% Define path of images
-\graphicspath{ {fig/} }
-
-% Metadata Information
-%\acmJournal{TWEB}
-%\acmVolume{9}
-%\acmNumber{4}
-%\acmArticle{39}
-%\acmYear{2010}
-%\acmMonth{3}
-%\copyrightyear{2009}
-%\acmArticleSeq{9}
-
-% Copyright
-\setcopyright{none}
-%\setcopyright{acmcopyright}
-%\setcopyright{acmlicensed}
-%\setcopyright{rightsretained}
-%\setcopyright{usgov}
-%\setcopyright{usgovmixed}
-%\setcopyright{cagov}
-%\setcopyright{cagovmixed}
-
-% DOI
-%\acmDOI{0000001.0000001}
-
-% Paper history
-%\received{June 2017}
-%\received[revised]{June 2017}
-%\received[accepted]{June 2017}
+\usepackage{mypaper}
 
 %---- Begin of document ----------------------------------------------------------
 
@@ -105,6 +58,10 @@
 	
 	% If the default list of authors is too long for headers}
 	%\renewcommand{\shortauthors}{H.Bohnengel}
+	
+%---- Input abbreviations ---------------------------------------------------------			
+	
+	\input{doc/abbreviations.tex}
 	
 %---- Input main text -------------------------------------------------------------		
 	
