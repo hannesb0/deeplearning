@@ -1,3 +1,5 @@
+% !TeX root = ../main.tex
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%																				%%
 %% File name: 		introduction.tex											%%
@@ -5,23 +7,25 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			22 May 2017													%%
+%% Date:			23 May 2017													%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 \section{Introduction}
 
-Virtual personal assistants (\acsu{VPA}) like Siri, Cortana or Google Now start having a huge impact on the way of interacting with electronic devices like smartphones. Up to now the \acp{VPA} help only with very simple tasks like search queries, starting phone calls or setting a clock, but according to a recent survey from the IT research firm Gartner~\cite{gartner:assistants}, this will change in the near future. With the Facebook Messenger it is already possible to make purchases and here new use cases are expected soon \cite{gartner:assistants}. To enable the almost natural speaking experience with such assistants both \ac{ASR} and speech synthesis are essential.
+Virtual personal assistants (\acsu{VPA}) like Siri, Cortana or Google Now start having a huge impact on the way of interacting with electronic devices like smartphones or notebooks. Up to now the \acp{VPA} help only with rather simple tasks like search queries, starting phone calls or setting a clock, but according to a recent survey from the IT research firm Gartner~\cite{gartner:assistants}, this will change in the near future. With the Facebook Messenger it is already possible to make purchases or to order a Uber car and here new use cases are expected soon. The survey also states, that through the vastly increase of devices in the scope of the \ac{IoT} the way of interacting with machines will go towards minimal or zero touch. Instead of interacting through common touch-displays or buttons, the user simply speaks to the device, like to another person. To enable this, both \ac{ASR} and speech synthesis are essential technologies.
 
-In this paper we will only focus on the speech synthesis part. The conventional technique to synthesize human speech from a given text or from linguistic descriptions is \ac{SPSS}; also referred to as \ac{SPSG}. This technique is based on the usage of \acp{HMM} and has several advantages over other existing approaches, like ...
+In this paper I will only focus on the speech synthesis part. A widley spread technique to synthesize human speech from a given text or from linguistic descriptions is \ac{SPSS}; also referred to as \ac{SPSG} \cite{ling:deep}. This technique is based on the usage of \acp{HMM}. Zen \textsl{et al.} \cite{zen:statistical} show that it has several advantages over its predecessor, the concatenative speech synthesis, for example the flexibility in changing voice characteristics and a smaller memory footprint. However the quality of the generated speech still has potential for improvement. Due to over-smoothing the voice sounds muffled in comparison to natural speech.
 
-However the conventional approach to synthesize human speech based on \acp{HMM} still delivers a muffled voice due to over-smoothing [stat]
+This is where recent achievements in deep learning come in. Deep learning is usually referred to as a class of machine learning techniques that achieve tasks like feature extraction or pattern analysis by using many connected layers of non-linear information processing \cite{ling:deep, li:survey}. Since 2006 ...
 
-Tutorial Survey\cite{li:survey}
+In \cite{li:survey} the author states four different approaches to improve \ac{SPSS} through deep learning models: 
 
-\vspace{3em}
+\newpage
 
 \begin{enumerate}
 	\item Why speech synthesis is important? What are its applications?
@@ -38,7 +42,7 @@ Tutorial Survey\cite{li:survey}
 These are the core papers: 
 \begin{itemize} %%{label}{spacing}
 	\item Robust Deep-learning Models for Text-to-speech Synthesis Support on Embedded Devices \cite{boros:robust}
-	\item Statistical parametric speech synthesis using deep neural networks \cite{ze:statistical}
+	\item Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical}
 	\item Deep neural networks employing Multi-Task Learning and stacked bottleneck features for speech synthesis \cite{wu:deep}
 	\item Efficient deep neural networks for speech synthesis using bottleneck features \cite{joo:efficient}
 	\item On the training aspects of Deep Neural Network (DNN) for parametric TTS synthesis \cite{qian:training}
@@ -55,4 +59,5 @@ These are interesting references:
 	\item A tutorial survey of architectures, algorithms, and applications for deep learning \cite{li:survey}
 \end{itemize}
 
-\newpage
+%\newpage
+\clearpage
