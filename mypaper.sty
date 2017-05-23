@@ -5,7 +5,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			22 May 2017													%%
+%% Date:			23 May 2017													%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -40,6 +40,18 @@
 
 % removes footnote with conference information in first column
 \renewcommand\footnotetextcopyrightpermission[1]{} 
+
+% redefine title font of package acmart
+\def\mytitlefont{\Huge\sffamily\bfseries}
+\let\@titlefont\mytitlefont
+
+% redefine section font
+\def\mysecfont{\bfseries\Large\section@raggedright\MakeUppercase}
+\let\@secfont\mysecfont
+
+% redefine subsection font
+\def\mysubsecfont{\bfseries\Large\section@raggedright}
+\let\@subsecfont\mysubsecfont
 
 % removes running headers
 \pagestyle{plain}
@@ -95,7 +107,7 @@
 [block]%
 {\bfseries\Large}%
 {\thesection\hspace{0.5cm}}%
-{0pt}%
+{-6pt}%
 {\bfseries\Large\uppercase}%
 
 % Format the style of subsection
@@ -104,7 +116,7 @@
 [block]%
 {\bfseries\large}%
 {\thesubsection\hspace{0.5cm}}%
-{0pt}%
+{-8pt}%
 {\bfseries\large}%
 
 % Set spacing of chapter
