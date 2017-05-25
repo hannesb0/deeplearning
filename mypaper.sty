@@ -14,7 +14,7 @@
 %---- packages -------------------------------------------------------------------
 
 % provide a package to use in a .tex file
-\ProvidesPackage{myreport}
+\ProvidesPackage{mypaper}
 
 % for formal tables
 \usepackage{booktabs}
@@ -55,6 +55,17 @@
 % redefine subsection font
 \def\mysubsecfont{\bfseries\Large\section@raggedright}
 \let\@subsecfont\mysubsecfont
+
+% redefine subsubsection layout (if not using titlesec)
+\ifdefined\TITLESEC
+
+\else
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+	{-.5\baselineskip \@plus -2\p@ \@minus -.2\p@}%
+	{.25\baselineskip}%
+	{\@subsubsecfont}}
+\fi
+
 
 % removes running headers
 \pagestyle{plain}
