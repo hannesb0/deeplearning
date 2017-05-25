@@ -7,46 +7,59 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			23 May 2017													%%
+%% Date:			25 May 2017													%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 \section{Introduction}
+\label{sec:introduction}
 
 Virtual personal assistants (\acsu{VPA}) like Siri, Cortana or Google Now start having a huge impact on the way of interacting with electronic devices like smartphones or notebooks. Up to now the \acp{VPA} help only with rather simple tasks like search queries, starting phone calls or setting a clock, but according to a recent survey from the IT research firm Gartner~\cite{gartner:assistants}, this will change in the near future. With the Facebook Messenger it is already possible to make purchases or to order a Uber car and here new use cases are expected soon. The survey also states, that through the vastly increase of devices in the scope of the \ac{IoT} the way of interacting with machines will go towards minimal or zero touch. Instead of interacting through common touch-displays or buttons, the user simply speaks to the device, like to another person. To enable this, both \ac{ASR} and speech synthesis are essential technologies.
 
 In this paper I will only focus on the speech synthesis part. A widley spread technique to synthesize human speech from a given text or from linguistic descriptions is \ac{SPSS}; also referred to as \ac{SPSG} \cite{ling:deep}. This technique is based on the usage of \acp{HMM}. Zen \textsl{et al.} \cite{zen:statistical} show that it has several advantages over its predecessor, the concatenative speech synthesis, for example the flexibility in changing voice characteristics and a smaller memory footprint. However the quality of the generated speech still has potential for improvement. Due to over-smoothing the voice sounds muffled in comparison to natural speech.
 
-This is where recent achievements in deep learning come in. Deep learning is usually referred to as a class of machine learning techniques that achieve tasks like feature extraction or pattern analysis by using many connected layers of non-linear information processing \cite{ling:deep, li:survey}. Since 2006 
+This is where recent achievements in deep learning come in. Deep learning is usually referred to as a class of machine learning techniques that achieve tasks like feature extraction or pattern analysis by using many connected layers of non-linear information processing \cite{ling:deep, li:survey}. Since 2006 advances in the training algorithms of \acp{DNN} have enabled the field of deep learning applications to emerge \cite{boros:robust}. \textbf{Something about cheep computing power and data availability !!!}
 
-In \cite{li:survey} the author states three different approaches to improve \ac{SPSS} through deep learning models: 
+In the tutorial survey \cite{li:survey} the author states three different approaches to improve the qualitiy of the synthesized voice of \ac{SPSS} through deep learning models:
 
 \vspace{1em}
 
-\begin{enumerate}
+\begin{enumerate}[leftmargin=16pt]
 	\parskip0.5em
-	\item Modeling Spectral Envelopes Using Restricted Boltzmann Machines and Deep Belief Networks for Statistical Parametric Speech Synthesis [XXX]
-	\item Multi-Distribution Deep Belief Network for Speech Synthesis [XXX]
-	\item Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical}
+	\item Replacement of the Gausian Models by generative deep learning models (Modeling Spectral Envelopes Using Restricted Boltzmann Machines and Deep Belief Networks for Statistical Parametric Speech Synthesis [XXX])
+	\item Representation of joint-distribution of linguistic and acoustic features by generative DBM (Multi-Distribution Deep Belief Network for Speech Synthesis [XXX])
+	\item Discriminative model of the DNN to represent the conditional distribution of the acoustic features given the linguistic features (Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical})
 \end{enumerate}
 
 \vspace{1em}
 
-\begin{itemize}
-	\item some content of core papers
-	\item brief description of following sections (structure of paper)
+\begin{itemize}[leftmargin=10pt]
+	\item \textbf{some content of core papers ???}
 \end{itemize}
 
-\clearpage
+\vspace{1em}
+
+In this paper I aim to give a systematic review about the impact of deep learning models on the implementation and the quality of speech synthesis on embedded or mobile devices. Therefore \textbf{???~four~???} publications are analysed and reviewed regarding their respective contribution to that goal.
+
+The remaining content of this paper is structured in the following way:
+
+\vspace{1em}
+
+\begin{description}[leftmargin=10pt]
+	\item[Section \ref{sec:speech}] first states the motivation, why speech synthesis is a useful technology. Then it describes the conventional approach without deep learning models for speech synthesis and gives an overview of advantages and drawbacks of the used models and techniques. This is followed by a brief explanation of the probably most common used technique \ac{SPSS}, where the paper \cite{zen:statistical} has been chosen as commonly cited reference. Finally two possibilities how \ac{SPSS} can be improved by deploying deep learning models are characterized, wherefore the papers \cite{zen:deepstatistical, hashimoto:effect} are reviewed.
+	%\item[Section \ref{sec:deeplearningspeech}] outlines \textbf{???~one or two~???} approach(es) how \ac{SPSS} can be improved by deploying deep learning models. papers [A~-~C] ...
+	\item[Section \ref{sec:embeddedspeech}] contains the motivation, why speech synthesis is important on embedded or mobile devices followed by two examples on how speech synthesis can be implemented on an embedded system, once without \cite{toth:optimizing} and once with deep learning models \cite{boros:robust}.
+	\item[Section \ref{sec:conclusion}] summarizes the essential points of this paper and gives some future directions.
+\end{description}
+
+\vspace{1em}
 
 \begin{enumerate}[leftmargin=16pt]
-	\item Why speech synthesis is important? What are its applications?
-	\item What are the conventional techniques of speech synthesis? What are the drawbacks of such techniques?
-	\item What is deep learning? What improvements do deep learning algorithms bring?
+	\item \textcolor{black!40}{Why speech synthesis is important? What are its applications?}
+	\item \textcolor{black!40}{What are the conventional techniques of speech synthesis? What are the drawbacks of such techniques?}
+	\item \textcolor{black!40}{What is deep learning? What improvements do deep learning algorithms bring?}
 	\item How some algorithms are modified to suit speech synthesis?
 	\item Why is it important to implement speech synthesis on embedded platform?
 	\item An example of how speech synthesis can be implemented on embedded platform without deep learning.
@@ -54,25 +67,44 @@ In \cite{li:survey} the author states three different approaches to improve \ac{
 	\item Future works.
 \end{enumerate}
 
+\newpage
+
+\textbf{These are the core papers:}
+\vspace{1em}
+\begin{enumerate}[leftmargin=16pt]
+	\item \textbf{Conventional \ac{SPSS}}
+	\begin{itemize}
+		\item Statistical parametric speech synthesis \cite{zen:statistical}
+	\end{itemize}
+	\vspace{1em}
+	\item \textbf{\ac{SPSS} with deep learning in general}
+	\begin{itemize}
+		\item Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical}
+		\item The effect of neural networks in statistical parametric speech synthesis \cite{hashimoto:effect}
+		\item \textcolor{black!40}{Deep neural networks employing Multi-Task Learning and stacked bottleneck features for speech synthesis \cite{wu:deep}}
+		\item \textcolor{black!40}{Efficient deep neural networks for speech synthesis using bottleneck features \cite{joo:efficient}}
+		\item \textcolor{black!40}{On the training aspects of Deep Neural Network (DNN) for parametric TTS synthesis \cite{qian:training}}
+		\item \textcolor{black!40}{TTS synthesis with bidirectional LSTM based recurrent neural networks \cite{fan:tts}}
+	\end{itemize}
+	\vspace{1em}
+	\item \textbf{Speech Synthesis WITHOUT DL on Emb. Systems}
+	\begin{itemize}
+		\item \textcolor{black!40}{Efficient memory compression in deep neural networks using coarse-grain sparsification for speech applications \cite{kadetotad:efficient}}
+		\item \textcolor{black!40}{Speeding up deep neural networks for speech recognition on ARM Cortex-A series processors \cite{xing:speeding}}
+		\item Optimizing HMM Speech Synthesis for Low-Resource Devices \cite{toth:optimizing}
+		\item \textcolor{black!40}{Some Aspects of HMM Speech Synthesis Optimization on Mobile Devices \cite{toth:aspects}}
+	\end{itemize}
+	\vspace{1em}
+	\item \textbf{Speech Synthesis WITH DL on Emb. Systems}
+	\begin{itemize}
+		\item Robust Deep-learning Models for Text-to-speech Synthesis Support on Embedded Devices \cite{boros:robust}
+	\end{itemize}
+\end{enumerate}
+
 \vspace{1em}
 
-These are the core papers: 
-\begin{itemize}[leftmargin=10pt]
-	\item Robust Deep-learning Models for Text-to-speech Synthesis Support on Embedded Devices \cite{boros:robust}
-	\item Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical}
-	\item Deep neural networks employing Multi-Task Learning and stacked bottleneck features for speech synthesis \cite{wu:deep}
-	\item Efficient deep neural networks for speech synthesis using bottleneck features \cite{joo:efficient}
-	\item On the training aspects of Deep Neural Network (DNN) for parametric TTS synthesis \cite{qian:training}
-	\item TTS synthesis with bidirectional LSTM based recurrent neural networks \cite{fan:tts}
-	\item The effect of neural networks in statistical parametric speech synthesis \cite{hashimoto:effect}
-	\item Efficient memory compression in deep neural networks using coarse-grain sparsification for speech applications \cite{kadetotad:efficient}
-	\item Speeding up deep neural networks for speech recognition on ARM Cortex-A series processors \cite{xing:speeding}
-\end{itemize}
-
+\textbf{These are interesting references:}
 \vspace{1em}
-
-These are interesting references:
-
 \begin{itemize}[leftmargin=10pt]
 	\item Deep Learning for Acoustic Modeling in Parametric Speech Generation: A systematic review of existing techniques and future trends \cite{ling:deep}
 	\item A tutorial survey of architectures, algorithms, and applications for deep learning \cite{li:survey}
