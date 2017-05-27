@@ -7,7 +7,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			25 May 2017													%%
+%% Date:			27 May 2017													%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -18,9 +18,10 @@
 
 \subsection{Motivation}
 
-Why speech synthesis is useful?\\What are use cases in daily life?\\Why there is need to further improve this technology?
+Why speech synthesis is useful/important?\\What are use cases in daily life?\\Why there is need to further improve this technology?
 
 \subsection{Conventional Approaches}
+\label{subsec:convenspeech}
 
 Brief overview of conventional approaches how to implement speech synthesis, with highlighting advantages and drawbacks.
 
@@ -33,22 +34,22 @@ Brief overview of conventional approaches how to implement speech synthesis, wit
 \end{itemize}
 
 \subsection{HMM based Speech Synthesis: \ac{SPSS}}
+\label{subsec:hmmspeech}
 
-Description of one approach more in detail \cite{zen:statistical}.
+Description of one approach (\ac{SPSS}) more in detail \cite{zen:statistical}.
 
 \subsection{\ac{SPSS} with Deep Learning Models}
+\label{subsec:deepspeech}
 
-Description of the improvements of the approach in previous subsection by using deep learning models. \\[0.5em]\textbf{!!~Here the focus on this paper is set~!!}
+Description of the improvements of the approach in previous subsection by using deep learning models.
 
-\subsubsection{One possibility for improvement}
+\subsubsection{General ways for improvement}
+
+The effect of neural networks in statistical parametric speech synthesis \cite{hashimoto:effect}\\
+
+\subsubsection{One specific approach for improvement}
 
 Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical}
-
-\subsubsection{Another possibility for improvement}
-
-\textbf{???}\\
-The effect of neural networks in statistical parametric speech synthesis \cite{hashimoto:effect}\\
-\textbf{???}
 
 \section{Speech Synthesis on Embedded Devices}
 \label{sec:embeddedspeech}
@@ -58,11 +59,13 @@ The effect of neural networks in statistical parametric speech synthesis \cite{h
 Why is it important to implement speech synthesis on embedded platform?
 
 \subsection{\ac{HMM}-based Approach}
+\label{subsec:hmmembedded}
 
-An example of how speech synthesis can be implemented on embedded platform without deep learning.
+An example of how speech synthesis can be implemented on embedded platform without deep learning (core paper~3).
 
 \subsection{Deep Learning-based Approach}
+\label{subsec:deepembedded}
 
-An example of how speech synthesis can be implemented on embedded platform WITH deep learning.
+An example of how speech synthesis can be implemented on embedded platform WITH deep learning (core paper 4).
 
 \clearpage
