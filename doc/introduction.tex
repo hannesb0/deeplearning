@@ -7,7 +7,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			25 May 2017													%%
+%% Date:			30 May 2017													%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -18,30 +18,16 @@
 
 Virtual personal assistants (\acsu{VPA}) like Siri, Cortana or Google Now start having a huge impact on the way of interacting with electronic devices like smartphones or notebooks. Up to now the \acp{VPA} help only with rather simple tasks like search queries, starting phone calls or setting a clock, but according to a recent survey from the IT research firm Gartner~\cite{gartner:assistants}, this will change in the near future. With the Facebook Messenger it is already possible to make purchases or to order an Uber car and new use cases are expected soon. The survey also states, that through the vast increase of devices in the scope of the \ac{IoT} the way of interacting with machines will go towards minimal or zero touch. Instead of interacting through common touch-displays or buttons, the user simply speaks to the device, like to another person. To enable this, both \ac{ASR} and speech synthesis are essential technologies.
 
-In this paper I will only focus on the speech synthesis part. A widley spread technique to synthesize human speech from a given text or from linguistic descriptions is \ac{SPSS}; also referred to as \ac{SPSG} \cite{ling:deep}. This technique is based on the usage of \acp{HMM}. Zen \textsl{et al.} \cite{zen:statistical} show that it has several advantages over its predecessor, the concatenative speech synthesis, for example the flexibility in changing voice characteristics and a smaller memory footprint. However the quality of the generated speech still has potential for improvement. Due to over-smoothing the voice sounds muffled in comparison to natural speech.
+In this paper I will only focus on the speech synthesis part. A widely spread technique to synthesize human speech from a given text or from linguistic descriptions is \ac{SPSS}; also referred to as \ac{SPSG} \cite{ling:deep}. This technique is based on the usage of \acp{HMM}. Zen \textsl{et al.} \cite{zen:statistical} show that it has several advantages over its predecessor, the concatenative speech synthesis, for example the flexibility in changing voice characteristics and a smaller memory footprint. However the quality of the generated speech still has potential for improvement. Due to over-smoothing the voice sounds muffled in comparison to natural speech.
 
-This is where recent achievements in deep learning come in. Deep learning is usually referred to as a class of machine learning techniques that achieve tasks like feature extraction or pattern analysis by using many connected layers of non-linear information processing \cite{ling:deep, li:survey}. Since 2006 advances in the training algorithms of \acp{DNN} have enabled the field of deep learning applications to emerge \cite{boros:robust}. Most machine learning models until then had used shallow structures, like for example \acp{HMM}, \acp{GMM}, \acp{CRF} or \acp{SVM}. In these structures only one layer is responsible for generating features out of the raw input signals. While achieving quite good results with rather simple problems, they reach their limit when it comes to more complex tasks like processing human language or natural images \cite{li:survey}.
+This is where recent achievements in deep learning come in. Deep learning is usually referred to as a class of machine learning techniques that achieve tasks like feature extraction or pattern analysis by using many connected layers of non-linear information processing \cite{ling:deep, li:survey}. Since 2006 advances in the training algorithms of \acp{DNN} have enabled the field of deep learning applications to emerge \cite{boros:robust}. Most machine learning models until then had used shallow structures, like for example \acp{HMM}, \acp{GMM}, \acp{CRF} or \acp{SVM}. In these structures only one layer is responsible for generating features out of the raw input signals. While achieving quite good results with rather simple problems, they reach their limit when it comes to more complex tasks like processing human language or natural images \cite{li:survey}. In the tutorial survey \cite{li:survey} the author also states four different approaches to improve speech synthesis through deep learning models, whereof three are dealing with \ac{SPSS}. One of those three approaches is described in \cite{zen:deepstatistical}, where the authors implemented a part of the speech synthesis system by using a \ac{DNN} and observed an improved performance in predicting output features. In \cite{hashimoto:effect} a more general approach is conducted by investigating what effects the deployment of a \ac{DNN} on different parts of the \ac{SPSS} system has. An improvement of the naturalness of the generated speech was one of the main results.
 
-In the tutorial survey \cite{li:survey} the author states four different approaches to improve the speech synthesis models through deep learning models. Three of them are dealing with \ac{SPSS}:
+For implementing speech synthesis on resource-constrained devices like smarthpones or tablets, \ac{SPSS} is considered the best solution due to the tradeoff between voice quality and acceptable footprint size \cite{toth:optimizing}. Since the computational costs of \ac{SPSS} are often high, some optimization steps like applying fewer conditional calls are conducted in \cite{toth:optimizing} to make the \ac{HMM}-based speech synthesis technique \ac{SPSS} more suitable for mobile devices. Going one step further, in \cite{boros:robust} an approach to adapt \ac{SPSS} for embedded devices by using a deep learning model, an \ac{AE}, is employed. Four tasks (syllabification, phonetic transcription, part-of-speech tagging and lexical stress prediction) are examined and tested with the use of this deep learning model. As results the authors highligh hugly reduced model sizes, higher training times, very close performance and a similar run time in comparison to the state-of-the-art models. This shows that the usage of deep learning models for speech synthesis on embedded systems is a reasonable step, not only to improve performance and voice quality, but also towards the independability on online databases for speech synthesis.
 
-\textcolor{ACMRed}{\bfseries Remark: Reformulate these points !!!}
-
-\begin{enumerate}[leftmargin=16pt]
-	\parskip0.5em
-	\item Replacement of the Gausian Models by generative deep learning models (Modeling Spectral Envelopes Using Restricted Boltzmann Machines and Deep Belief Networks for Statistical Parametric Speech Synthesis [XXX])
-	\item Representation of joint-distribution of linguistic and acoustic features by generative DBM (Multi-Distribution Deep Belief Network for Speech Synthesis [XXX])
-	\item Discriminative model of the DNN to represent the conditional distribution of the acoustic features given the linguistic features (Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical})
-\end{enumerate}
-
-\textcolor{ACMRed}{\bfseries Remark: Write something about speech synthesis on embedded devices}
-
-\vspace{1em}
-
-The remaining paper is structured as follows: Section~\ref{sec:speech} first states the motivation, why speech synthesis is a useful technology. Then it describes the conventional approach without deep learning models for speech synthesis and gives an overview of advantages and drawbacks of the used models and techniques. This is followed by a brief explanation of the probably most common used technique \ac{SPSS}, where the paper \cite{zen:statistical} has been chosen as commonly cited reference. Finally two possibilities how \ac{SPSS} can be improved by deploying deep learning models are characterized, wherefore the papers \cite{zen:deepstatistical, hashimoto:effect} are reviewed. In Section~\ref{sec:embeddedspeech} the motivation, why speech synthesis is important on embedded or mobile devices is given followed by two examples on how speech synthesis can be implemented on an embedded system, once without \cite{toth:optimizing} and once with deep learning models \cite{boros:robust}. Finally Section~\ref{sec:conclusion} summarizes the essential points of this paper and gives some future directions.
+The remaining paper is structured as follows: Section~\ref{sec:speech} first states the motivation, why speech synthesis is a useful technology. Then it describes the conventional approach without deep learning models for speech synthesis and gives an overview of advantages and drawbacks of the used models and techniques. This is followed by a brief explanation of the probably most common used technique \ac{SPSS}, where the paper \cite{zen:statistical} has been chosen as commonly cited reference. Thereafter two possibilities how \ac{SPSS} can be improved by deploying deep learning models are characterized, wherefore the papers \cite{zen:deepstatistical, hashimoto:effect} are reviewed. In Section~\ref{sec:embeddedspeech} the motivation, why speech synthesis is important on embedded or mobile devices is given, followed by two examples on how speech synthesis can be implemented on an embedded system, once without \cite{toth:optimizing} and once with deep learning models \cite{boros:robust}. Finally Section~\ref{sec:conclusion} summarizes the essential points of this paper and gives some future directions.
 
 
-\vspace{3em}
-
+\vfill
 
 \textbf{\Large Remarks and notes starting here:}\\
 
@@ -55,10 +41,13 @@ The remaining paper is structured as follows: Section~\ref{sec:speech} first sta
 		\item deep learning <---> speech synthesis
 		\item deep learning <---> embedded devices
 	\end{itemize}
-	\item Where to go into detail? Suggestion: One way of improving speech synthesis with deep learning.
-	\item Core paper on \ac{SPSS} \cite{zen:statistical} available in two versions (4 and 23 pages). Which one to use as core paper?
-	\item Connection between the improvements of deep learning on speech synthesis (Section) and the implementation of speech synthesis with/without deep learning?
+	\item Where to go into technical detail? Suggestion: One way of improving speech synthesis with deep learning.
+	\item Core paper on \ac{SPSS} \cite{zen:statistical} available in two versions (4 and 23 pages). Which one to use as core paper? Suggestion: 4 page version as core paper and 23 page version as reference.
+	\item Connection between the improvements of deep learning on speech synthesis (Section~\ref{subsec:deepspeech}) and the implementation of speech synthesis with/without deep learning (Section~\ref{sec:embeddedspeech})?
+	\item Strictly spoken a smartphone/tablet is not an "embedded" device. Is some form of further declaration necessary in this context?
 \end{itemize}
+
+\clearpage
 
 \iffalse
 \begin{enumerate}[leftmargin=16pt]
@@ -75,7 +64,7 @@ The remaining paper is structured as follows: Section~\ref{sec:speech} first sta
 
 \vspace{1em}
 
-\textbf{These are the core papers (the red colored):}
+\textbf{\Large These are the core papers (the red colored):}
 \begin{enumerate}[leftmargin=16pt]
 	\item \textbf{Conventional \ac{SPSS}}
 	\begin{itemize}[leftmargin=10pt]
@@ -106,17 +95,37 @@ The remaining paper is structured as follows: Section~\ref{sec:speech} first sta
 	\vspace{1em}
 	\item \textbf{Speech Synthesis WITH DL on Emb. Systems}
 	\begin{itemize}[leftmargin=10pt]
-		\item \textcolor{ACMRed}{Robust Deep-learning Models for Text-to-speech Synthesis Support on Embedded Devices} \cite{boros:robust}
+		\item \textcolor{ACMRed}{Robust Deep-learning Models for Text-to-speech Synthesis Support on Embedded Devices} \cite{boros:robust} \\ \textit{"This paper focuses on the development of small robust deep-learning models that are designed to provide high quality text-to-speech (TTS) functionality (one of the three main components of HCI) on smart devices, without requiring network access. We obtain very good results in TTS text sub-tasks using models significantly smaller than those used in state-of-the-art approaches"}
 	\end{itemize}
 \end{enumerate}
 
-\vspace{1em}
+\vspace{5em}
 
-\textbf{These are interesting references:}
+\textbf{\Large These are interesting references:}
 \vspace{1em}
 \begin{itemize}[leftmargin=10pt]
 	\item Deep Learning for Acoustic Modeling in Parametric Speech Generation: A systematic review of existing techniques and future trends \cite{ling:deep}
 	\item A tutorial survey of architectures, algorithms, and applications for deep learning \cite{li:survey}
+\end{itemize}
+
+\vspace{5em}
+
+\textbf{\Large Page count estimation:}
+\vspace{1em}
+\begin{itemize}[leftmargin=10pt]	
+	\item Section~\ref{sec:introduction}\hspace{4em} 			1.25 \hspace{2em} \textcolor{black!40}{(incl. Abstract)}
+	%\item Section~\ref{sec:speech} %\hspace{4em} 				x
+	\item Section~\ref{subsec:motspeech}\hspace{3.35em} 		0.25
+	\item Section~\ref{subsec:convenspeech}\hspace{3.35em} 		0.5
+	\item Section~\ref{subsec:hmmspeech}\hspace{3.35em} 		0.5
+	\item Section~\ref{subsec:deepspeech}\hspace{3.35em} 		1
+	%\item Section~\ref{sec:embeddedspeech} %\hspace{4em} 		x
+	\item Section~\ref{subsec:motembedded}\hspace{3.35em} 		0.25
+	\item Section~\ref{subsec:hmmembedded}\hspace{3.35em} 		0.75
+	\item Section~\ref{subsec:deepembedded}\hspace{3.35em} 		0.75
+	\item Section~\ref{sec:conclusion}\hspace{4em}				0.25
+	\item References\hspace{3.35em}								0.5\\[0.5em]
+	\textbf{Total:}\hspace{5.2em} 								\textbf{6 pages}
 \end{itemize}
 
 %\newpage
