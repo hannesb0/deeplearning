@@ -1,0 +1,122 @@
+% !TeX root = ../main.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%																				%%
+%% File name: 		remarks.tex													%%
+%% Project name:	Applications in Deep Learning								%%
+%% Type of work:	Advanced Seminar											%%
+%% Author:			Hannes Bohnengel											%%
+%% Mentor:			Debayan Roy													%%
+%% Date:			31 May 2017													%%
+%% University:		Technical University of Munich								%%
+%% Comments:		Created in texstudio with tab width = 4						%%
+%%																				%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{\Large Remarks starting here:}
+
+\vspace{2em}
+\textbf{\large Page count estimation:}
+\vspace{1em}
+\begin{itemize}[leftmargin=10pt]	
+	\item Section~\ref{sec:introduction}\hspace{4em} 			1.25 \hspace{2em} \textcolor{black!40}{(incl. Abstract)}
+	%\item Section~\ref{sec:speech} %\hspace{4em} 				x
+	\item Section~\ref{subsec:convenspeech}\hspace{3.35em} 		0.75
+	\item Section~\ref{subsec:hmmspeech}\hspace{3.35em} 		0.5
+	%	\item Section~\ref{sec:deepspeech}\hspace{4em} 				1
+	\item Section~\ref{subsec:deepeffect}\hspace{3.35em}		0.5
+	\item Section~\ref{subsec:deepspss}\hspace{3.35em}			0.5
+	%\item Section~\ref{sec:embeddedspeech} %\hspace{4em} 		x
+	\item Section~\ref{subsec:motembedded}\hspace{3.35em} 		0.25
+	\item Section~\ref{subsec:hmmembedded}\hspace{3.35em} 		0.75
+	\item Section~\ref{subsec:deepembedded}\hspace{3.35em} 		0.75
+	\item Section~\ref{sec:conclusion}\hspace{4em}				0.25
+	\item References\hspace{3.35em}								0.5\\[0.5em]
+	\textbf{Total:}\hspace{5.2em} 								\textbf{6 pages}
+\end{itemize}
+
+\vspace{2em}
+\textbf{\large To do:}
+\vspace{1em}
+\begin{itemize}[leftmargin=10pt]
+	\item check references
+	\item check correct citing
+	\item check for typos
+	\item check page count (6 pages)
+	\item disable sreen mode on last draft
+\end{itemize}
+
+\vspace{2em}
+\textbf{\large Open points:}
+\vspace{1em}
+\begin{itemize}[leftmargin=10pt]
+	\item Improvements of deep learning in speech synthesis also about voice quality. Does that make sense in this context?
+	\item Where the focus of this paper should be (deep learning / speech synthesis / embedded devices)? Most papers are available for:
+	\begin{itemize}
+		\item deep learning <---> speech synthesis
+		\item deep learning <---> embedded devices
+	\end{itemize}
+	\item Where to go into technical detail? Suggestion: One way of improving speech synthesis with deep learning.
+	\item Core paper on \ac{SPSS} \cite{zen:statistical} available in two versions (4 and 23 pages). Which one to use as core paper? Suggestion: 4 page version as core paper and 23 page version as reference.
+	\item Connection between the improvements of deep learning on speech synthesis (Section~\ref{subsec:deepspeech}) and the implementation of speech synthesis with/without deep learning (Section~\ref{sec:embeddedspeech})?
+	\item Strictly spoken a smartphone/tablet is not an "embedded" device. Is some form of further declaration necessary in this context?
+\end{itemize}
+
+\vspace{2em}
+\textbf{\large Questions:}
+\vspace{1em}
+\begin{enumerate}[leftmargin=16pt]
+	\item \textcolor{black!40}{Why speech synthesis is important? What are its applications?}
+	\item \textcolor{black!40}{What are the conventional techniques of speech synthesis? What are the drawbacks of such techniques?}
+	\item \textcolor{black!40}{What is deep learning? What improvements do deep learning algorithms bring?}
+	\item How some algorithms are modified to suit speech synthesis?
+	\item Why is it important to implement speech synthesis on embedded platform?
+	\item An example of how speech synthesis can be implemented on embedded platform without deep learning.
+	\item How the 3 can be combined?
+	\item Future works.
+\end{enumerate}
+
+\vspace{2em}
+\textbf{\large These are the core papers (the red colored):}
+\vspace{1em}
+\begin{enumerate}[leftmargin=16pt]
+	\item \textbf{Conventional \ac{SPSS}}
+	\begin{itemize}[leftmargin=10pt]
+		\item \textcolor{ACMRed}{Statistical parametric speech synthesis} \cite{zen:statistical}\\
+		The most cited paper for \ac{SPSS}. Two versions available, one with 4 pages (IEEE Xplore, 2007) and one with 23 pages ()\cite{zen:statistical}, 2009 , No access over ScienceDirect --> PDF from \url{http://mlsp.cs.cmu.edu/courses/fall2012/lectures/spss_specom.pdf}).
+	\end{itemize}
+	\vspace{1em}
+	\item \textbf{\ac{SPSS} with deep learning in general}
+	\begin{itemize}[leftmargin=10pt]
+		\item \textcolor{ACMRed}{Statistical parametric speech synthesis using deep neural networks} \cite{zen:deepstatistical}\\
+		\textit{"The relationship between input texts and their acoustic realizations is modeled by a DNN. The use of the DNN can address some limitations of the conventional approach. (...) The objective evaluation showed that the use of a deep architecture improved the performance of the neural network-based system for predicting spectral and excitation parameters. (..) One of the advantages of the HMM-based system over the DNN-based one is the reduced computational cost."}
+		\item \textcolor{ACMRed}{The effect of neural networks in statistical parametric speech synthesis} \cite{hashimoto:effect}\\
+		\textit{"This paper investigates how to use neural networks in statistical parametric speech synthesis. (...) In this paper, the effect of DNNs for each component is investigated by comparing DNNs with generative models. Experimental results show that the use of a DNN as acoustic models is effective and the parameter generation combined with a DNN improves the naturalness of synthesized speech."}
+		\item \textcolor{black!40}{Deep neural networks employing Multi-Task Learning and stacked bottleneck features for speech synthesis \cite{wu:deep}}
+		\item \textcolor{black!40}{Efficient deep neural networks for speech synthesis using bottleneck features \cite{joo:efficient}}
+		\item \textcolor{black!40}{On the training aspects of Deep Neural Network (DNN) for parametric TTS synthesis \cite{qian:training}}
+		\item \textcolor{black!40}{TTS synthesis with bidirectional LSTM based recurrent neural networks \cite{fan:tts}}
+	\end{itemize}
+	\vspace{1em}
+	\item \textbf{Speech Synthesis WITHOUT DL on Emb. Systems}
+	\begin{itemize}[leftmargin=10pt]
+		\item \textcolor{black!40}{Efficient memory compression in deep neural networks using coarse-grain sparsification for speech applications \cite{kadetotad:efficient}}
+		\item \textcolor{black!40}{Speeding up deep neural networks for speech recognition on ARM Cortex-A series processors \cite{xing:speeding}}
+		\item \textcolor{ACMRed}{Optimizing HMM Speech Synthesis for Low-Resource Devices} \cite{toth:optimizing}\\
+		Chosen, because \ac{HMM}-based synthesis is part of \ac{SPSS}. \textit{"Several optimization steps, e.g., changing HMM parameters, applying performance-specific programming methods, are analyzed on three different smartphones in terms of speed, footprint size, and	subjective speech quality. The goal is to approach real-time functionality while keeping the speech quality as high as possible"}
+		\item \textcolor{black!40}{Some Aspects of HMM Speech Synthesis Optimization on Mobile Devices \cite{toth:aspects}}
+	\end{itemize}
+	\vspace{1em}
+	\item \textbf{Speech Synthesis WITH DL on Emb. Systems}
+	\begin{itemize}[leftmargin=10pt]
+		\item \textcolor{ACMRed}{Robust Deep-learning Models for Text-to-speech Synthesis Support on Embedded Devices} \cite{boros:robust} \\ \textit{"This paper focuses on the development of small robust deep-learning models that are designed to provide high quality text-to-speech (TTS) functionality (one of the three main components of HCI) on smart devices, without requiring network access. We obtain very good results in TTS text sub-tasks using models significantly smaller than those used in state-of-the-art approaches"}
+	\end{itemize}
+\end{enumerate}
+
+\vspace{2em}
+\textbf{\large These are interesting references:}
+\vspace{1em}
+\begin{itemize}[leftmargin=10pt]
+	\item Deep Learning for Acoustic Modeling in Parametric Speech Generation: A systematic review of existing techniques and future trends \cite{ling:deep}
+	\item A tutorial survey of architectures, algorithms, and applications for deep learning \cite{li:survey}
+\end{itemize}

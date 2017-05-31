@@ -7,47 +7,66 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			25 May 2017													%%
+%% Date:			31 May 2017													%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Conventional Approach for Speech Synthesis}
-\label{sec:conventionalspeech1}
+\section{Conventional Speech Synthesis}
+\label{sec:speech}
 
-\subsection{Overview of Techniques}
+\subsection{Motivation \& Approaches}
+\label{subsec:convenspeech}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+Why speech synthesis is useful/important?\\What are use cases in daily life?\\Why there is need to further improve this technology?
+Brief overview of conventional approaches how to implement speech synthesis, with highlighting advantages and drawbacks.
+
+\begin{itemize}[leftmargin=10pt]
+	\item concatenative \& unit-selection
+	\item formant-based
+	\item diphone-based
+	\item \ac{SPSS}
+	\item etc. ??
+\end{itemize}
 
 \subsection{HMM based Speech Synthesis: \ac{SPSS}}
+\label{subsec:hmmspeech}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Description of one approach (\ac{SPSS}) more in detail \cite{zen:statistical}.
 
-\section{Speech Synthesis using Deep Learning}
-\label{sec:deeplearningspeech1}
+\section{\ac{SPSS} with Deep Learning Models}
+\label{sec:deepspeech}
 
-\subsection{Motivation}
+Description of the improvements of the approach in previous subsection by using deep learning models.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\subsection{General ways for improvement}
+\label{subsec:deepeffect}
 
-\subsection{One Approach for Improvement}
+The effect of neural networks in statistical parametric speech synthesis \cite{hashimoto:effect}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+\subsection{One specific approach for improvement}
+\label{subsec:deepspss}
+
+Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical}
 
 \section{Speech Synthesis on Embedded Devices}
-\label{sec:embeddedspeech1}
+\label{sec:embeddedspeech}
 
 \subsection{Motivation}
+\label{subsec:motembedded}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+Why is it important to implement speech synthesis on embedded platform?\\
+What needs to be thought about when dealing with embedded or mobile devices?
 
 \subsection{\ac{HMM}-based Approach}
+\label{subsec:hmmembedded}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+An example of how speech synthesis can be implemented on embedded platform without deep learning (core paper~3).
 
 \subsection{Deep Learning-based Approach}
+\label{subsec:deepembedded}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+An example of how speech synthesis can be implemented on embedded platform WITH deep learning (core paper 4).
 
-\newpage
+\clearpage
