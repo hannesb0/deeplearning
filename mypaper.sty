@@ -27,6 +27,9 @@
 % to change indentation of lists
 \usepackage{enumitem}
 
+% for tables
+\usepackage{tabularx}
+
 % to fill in blind text for formatting purposes
 \usepackage{blindtext}
 
@@ -66,6 +69,8 @@
 	{\@subsubsecfont}}
 \fi
 
+% define new column type for the tabularx environment
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 % removes running headers
 \pagestyle{plain}
