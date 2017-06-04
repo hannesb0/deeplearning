@@ -7,7 +7,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			01 June 2017												%%
+%% Date:			04 June 2017												%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -19,69 +19,63 @@
 \subsection{Motivation \& Approaches}
 \label{subsec:convenspeech}
 
-\textbf{\color{ACMRed}Something about applications!}
+Speech synthesis has emerged over the last 10 years due to a vast contribution by the global community of researchers and the increasing computational power for data processing. Its quality and naturalness has increased steadily and different approaches have been developed so far \cite{suendermann:challenges}. The typical applications like navigation systems in cars or telephone-based dialogue systems are nowadays widely established. But also as reading aid for visually impaired people \cite{readspeaker:tts} or as in the case of the famous scientist Stephen Hawking, who has been using a synthesized voice to communicate since 1997 \cite{hawking:speech}, speech synthesis has proven to be very useful. Another very interesting application of speech synthesis is shown in [XX]. The author proposed to introduce synthetic speech as means of communication between pilots, since there have been many accidents due to missunderstandings at radio-based communication. %Finally the interaction between man and machines or robots \cite{hill:manmachine}
 
-The classic applications of speech synthesis according to [Cam-Seminar] are the following
+According to \cite{hinterleitner:quality} speech synthesis can be divided into three types: Canned speech, \ac{CTS} and \ac{TTS}. Canned speech more or less is the replay of prerecorded spoken sentences or words with none or very little adjustments. A typical example are the announcements on train stations. Because of the high effort of recording everything (almost) exactly as it is replayed, this approach is limited to only a few simple applications. With \ac{CTS} the waveform is generated out of a linguistic description without any information of the respective text. In this way no natural language processing is required, but nevertheless \ac{CTS} nowadays has not made any important impact. The last and most promising type is \ac{TTS}.
 
+A \ac{TTS} system consists of a \ac{NLP} part, where the text is analysed and the word and sentence structure and accents are extracted. In the next step these accents are used to generate the prosody of the given text like duration, intensity and pitch. Then the created phonetic represantations with prosody information are stringed together to a continuous stream of signal parameters. The last task, the speech generation, uses this stream to generate the respective waveform. This function block can be implemented in different ways. In \cite{hinterleitner:quality} three general approaches are named as follows: Parametric Speech Synthesis (formant-based synthesis), Concatenative Speech Synthesis (unit-selection synthesis) and Statistical Parametric Speech Synthesis (\ac{HMM}-based synthesis). The methods in brackets are the respective implementations, which are most commonly used. 
 
-Accessibility, screenreader\\
-Telephone services, dialogue systems\\
-Basic (and rather boring) e-Book reader\\
-In-car navigation\\
-Basic voice communication aids for people with disabilities\\
+The formant-based synthesis is the oldest approach. To generate a voice waveform, an excitation signal is fed into multiple formant filters which describe the characteristics of the human vocal tract. The output of the filters then forms the voice waveform. This technique is the only one which does not need any recorded speech, but instead generates the synthesized voice only by modeling the human vocal tract. The quality of the generated voice is the lowest in comparison to the other techniques, but therefore formant-based synthesizer have the smallest footprint and the voice characteristics can easilily been modified by just changing the filter parameters~\cite{hinterleitner:quality}.
 
+With the development of concatenative speech synthesizer the quality of the generated speech improved tremendously. Very similar to \ac{CTS} prerecorded speech is used as reference. Very basically said, the recorded speech is devided into units and these units are then stringed together to form the new speech signal according to a given text. Hereby the chosen size of the units determines both the footprint size and the voice quality. With larger units a higher voice quality can be achieved, but this also results in a much larger database. The challenge in unit-selection is to ensure, that the transissions between the units are as natural as possible~\cite{hinterleitner:quality}. In Section~\ref{subsec:hmmspeech} some concepts on how to achieve this as well as the third implementation, the \ac{HMM}-based synthesis, a specific instance of \ac{SPSS} are described in detail.
 
-\begin{itemize}[leftmargin=10pt]
-	\item virtual personal assistants
-	\item reading aid for visually impaired
-	\item Stephen Hawking
-	\item public announcements (train stations)
-	\item navigation / media systems in cars (handsfree)
-	\item man-machine-interface
-\end{itemize}
-
-See here: \cite{suendermann:challenges}, \textit{New and emerging applications of speech synthesis}, \url{http://www.gingersoftware.com/content/blog/text-to-speech-online/}, \url{http://www.readspeaker.com/benefits-of-text-to-speech/}\\
-
-According to \cite{X} speech synthesis can be divided into three types: Canned speech, \ac{CTS} and \ac{TTS}. Canned speech more or less is the replay of prerecorded spoken sentences or words with none or very little adjustments. A typical example are the announcements on train stations. Because of the high effort of recording everything (almost) exactly as it is replayed this approach is limited to only a few simple applications. With \ac{CTS} the waveform is generated out of a linguistic description without any information of the respective text. In this way no natural language processing is required, but nevertheless \ac{CTS} nowadays has not made any important impact. The last and most promising type is \ac{TTS}.
-
-\begin{figure}[h]
-	\includegraphics[width=0.6\columnwidth]{tts-structure-0.png}
-	\caption{General structure of a \ac{TTS}-system \cite{X}}
-\end{figure}
-
-Brief overview of conventional approaches how to implement speech synthesis, with highlighting advantages and drawbacks.
-
-\begin{itemize}[leftmargin=10pt]
-	\item concatenative \& unit-selection
-	\item formant-based
-	\item diphone-based
-	\item \ac{SPSS}
-	\item etc. ??
-\end{itemize}
-
-\vspace{1em}
-
-\begin{itemize}[leftmargin=10pt]
-	\item Why speech synthesis is useful/important?\\What are use cases in daily life?
-	\item Why there is need to further improve this technology?
-\end{itemize}
-
-\subsection{HMM based Speech Synthesis: \ac{SPSS}}
+\subsection{\ac{HMM}-based Speech Synthesis}
 \label{subsec:hmmspeech}
 
-Description of one approach (\ac{SPSS}) more in detail \cite{zen:statistical}.
+In this section the \ac{HMM}-based, the most recent approach for speech synthesis will be described further and both advantages and drawbacks compared to unit-selection synthesis will be highlighted. Therefore the work of Zen et al. \cite{zen:statistical} will be taken as reference.
+
+The quality of unit-selection synthesis directly depends from the quality of the prerecorded speech. But even with a database of excellent quality sporadic errors can still not be avoided totally. If a specific phonetic or prosodic part of a generated sentence is not well represented in the database the output quality of this sentence suffers immensely. To try to avoid this a huge effort in specifically designing the database for the required application can be performed, but still there is no guarantee that such bad joins happen. In addition the fact, that in unit-selection no or only very little adaptions of the voice characteristics are possible without an enormous increase of the database size, the ambition towards seamless speech synthesis leads to the \ac{HMM}-based approach.
+
+\textbf{{\color{ACMRed}Details about unit-selection synthesis ???}}
+
+In Figure~\ref{fig:hmm} the structure of a typical \ac{HMM}-based synthesizer is shown. The whole system can be devided into two parts, the training and the synthesis part. The connection of these two parts are a number of context-dependent (\textbf{\color{ACMRed}what is that?}) \acp{HMM}.
+%The authors first outline the increasing role of unit-selection synthesis
+\begin{figure}[h]
+	\includegraphics[width=0.8\columnwidth]{hmm-system.pdf}
+	\caption{Function blocks of \ac{HMM}-based synthesis \cite{zen:statistical}}
+	\label{fig:hmm}
+\end{figure}
+
+
+{\color{ACMRed}In Table~\ref{tab:speechgeneration} these techniques are compared regarding the most prominent advantages and drawbacks.}
+
+\begin{table}[h]
+	\caption{Comparison of speech generation techniques \cite{hinterleitner:quality}}
+	\label{tab:speechgeneration}
+	\begin{tabularx}{1\columnwidth}{lYY}
+		\toprule
+		Technique & Advantages & Drawbacks\\
+		\midrule
+		Formant-based & No prerecorded speech required & Very artificial and metallic voice\\[0.5em]
+		Unit-selection & Very high voice quality possible & Large database required\\[0.5em]
+		\ac{HMM}-based & Adjustable voice and small footprint & Voice sounds muffled\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+
+\vspace{1em}
+\textbf{Why there is need to further improve this technology?}
 
 \clearpage
 
 \section{\ac{SPSS} with Deep Learning Models}
 \label{sec:deepspeech}
 
-Description of the improvements of the approach in previous subsection by using deep learning models.
-
 \subsection{General ways for improvement}
 \label{subsec:deepeffect}
 
-The effect of neural networks in statistical parametric speech synthesis \cite{hashimoto:effect}
+In \cite{hashimoto:effect} the effects of deep learning methods on \ac{SPSS} are investigated. Therefore the different parts of a \ac{HMM}-based speech synthesis system are modeled with a \ac{DNN} and then the output is compared to the conventional approach.
 
 \subsection{One specific approach for improvement}
 \label{subsec:deepspss}
