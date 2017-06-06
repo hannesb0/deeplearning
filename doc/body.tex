@@ -7,7 +7,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			04 June 2017												%%
+%% Date:			05 June 2017												%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -34,23 +34,28 @@ With the development of concatenative speech synthesizer the quality of the gene
 
 In this section the \ac{HMM}-based, the most recent approach for speech synthesis will be described further and both advantages and drawbacks compared to unit-selection synthesis will be highlighted. Therefore the work of Zen et al. \cite{zen:statistical} will be taken as reference.
 
-The quality of unit-selection synthesis directly depends from the quality of the prerecorded speech. But even with a database of excellent quality sporadic errors can still not be avoided totally. If a specific phonetic or prosodic part of a generated sentence is not well represented in the database the output quality of this sentence suffers immensely. To try to avoid this a huge effort in specifically designing the database for the required application can be performed, but still there is no guarantee that such bad joins happen. In addition the fact, that in unit-selection no or only very little adaptions of the voice characteristics are possible without an enormous increase of the database size, the ambition towards seamless speech synthesis leads to the \ac{HMM}-based approach.
+The quality of unit-selection synthesis directly depends from the quality of the prerecorded speech. But even with a database of excellent quality sporadic errors can still not be avoided totally. If a specific phonetic or prosodic part of a generated sentence is not well represented in the database the output quality of this sentence suffers immensely. To try to avoid this a huge effort in specifically designing the database for the required application can be performed, but still there is no guarantee that such bad joins happen. In addition the fact, that in unit-selection no or only very little adaptions of the voice characteristics are possible without an enormous increase of the database size, the ambition towards seamless speech synthesis leads to the \ac{HMM}-based approach. There a statistic representation of some sets of speech segments is used to generate arbitrary synthetic speech.
 
 \textbf{{\color{ACMRed}Details about unit-selection synthesis ???}}
 
-In Figure~\ref{fig:hmm} the structure of a typical \ac{HMM}-based synthesizer is shown. The whole system can be devided into two parts, the training and the synthesis part. The connection of these two parts are a number of context-dependent (\textbf{\color{ACMRed}what is that?}) \acp{HMM}.
-%The authors first outline the increasing role of unit-selection synthesis
+In Figure~\ref{fig:hmm} the structure of a typical \ac{HMM}-based synthesizer is shown. The whole system can be devided into two parts, the training and the synthesis part. The connection of these two parts are a number of context-dependent ({\color{ACMRed}what is that?}) \acp{HMM}. In the training part spectrum and excitation parameters of the recorded speech are used to generate acoustic models represented by the \acp{HMM}. Thereby phonetic, linguistic and prosodic parameters are considered. {\color{ACMRed}Details about spectrum and excitation parameters?} In comparison to a unit-selection system the database only is needed in the training part.
+
 \begin{figure}[h]
 	\includegraphics[width=0.8\columnwidth]{hmm-system.pdf}
 	\caption{Function blocks of \ac{HMM}-based synthesis \cite{zen:statistical}}
 	\label{fig:hmm}
 \end{figure}
 
+In the synthesis part first the text which is to be synthesized is 
+
+\newpage
+
+The main disadvantage of this approach compared to unit-selection synthesis is the quality of the synthesized speech. Three factors are accountable for the lack of quality: vocoder, modeling accuracy, and over-smoothing.
 
 {\color{ACMRed}In Table~\ref{tab:speechgeneration} these techniques are compared regarding the most prominent advantages and drawbacks.}
 
 \begin{table}[h]
-	\caption{Comparison of speech generation techniques \cite{hinterleitner:quality}}
+	\caption{Comparison of speech generation methods~\cite{hinterleitner:quality, zen:statistical}}
 	\label{tab:speechgeneration}
 	\begin{tabularx}{1\columnwidth}{lYY}
 		\toprule
@@ -64,10 +69,18 @@ In Figure~\ref{fig:hmm} the structure of a typical \ac{HMM}-based synthesizer is
 \end{table}
 
 
-\vspace{1em}
-\textbf{Why there is need to further improve this technology?}
+\vspace{1em}\ \\
+\textbf{Why there is need to further improve this technology?}\\
+\textbf{What is a HMM?}
 
 \clearpage
+
+
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+% SPSS with Deep Learning Models
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
 
 \section{\ac{SPSS} with Deep Learning Models}
 \label{sec:deepspeech}
@@ -81,6 +94,12 @@ In \cite{hashimoto:effect} the effects of deep learning methods on \ac{SPSS} are
 \label{subsec:deepspss}
 
 Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical}
+
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+% Speech Synthesis on Embedded Devices
+%---------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
 
 \section{Speech Synthesis on Embedded Devices}
 \label{sec:embeddedspeech}
