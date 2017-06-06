@@ -7,7 +7,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			05 June 2017												%%
+%% Date:			06 June 2017												%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -32,30 +32,30 @@ With the development of concatenative speech synthesizer the quality of the gene
 \subsection{\ac{HMM}-based Speech Synthesis}
 \label{subsec:hmmspeech}
 
-In this section the \ac{HMM}-based, the most recent approach for speech synthesis will be described further and both advantages and drawbacks compared to unit-selection synthesis will be highlighted. Therefore the work of Zen et al. \cite{zen:statistical} will be taken as reference.
+In this section the \ac{HMM}-based, the most recent approach for speech synthesis will be described further and both advantages and drawbacks compared to unit-selection synthesis will be highlighted. Therefore the work of Black \textit{et al.} \cite{black:statistical} will be taken as reference.
 
 The quality of unit-selection synthesis directly depends from the quality of the prerecorded speech. But even with a database of excellent quality sporadic errors can still not be avoided totally. If a specific phonetic or prosodic part of a generated sentence is not well represented in the database the output quality of this sentence suffers immensely. To try to avoid this a huge effort in specifically designing the database for the required application can be performed, but still there is no guarantee that such bad joins happen. In addition the fact, that in unit-selection no or only very little adaptions of the voice characteristics are possible without an enormous increase of the database size, the ambition towards seamless speech synthesis leads to the \ac{HMM}-based approach. There a statistic representation of some sets of speech segments is used to generate arbitrary synthetic speech.
 
 \textbf{{\color{ACMRed}Details about unit-selection synthesis ???}}
 
-In Figure~\ref{fig:hmm} the structure of a typical \ac{HMM}-based synthesizer is shown. The whole system can be devided into two parts, the training and the synthesis part. The connection of these two parts are a number of context-dependent ({\color{ACMRed}what is that?}) \acp{HMM}. In the training part spectrum and excitation parameters of the recorded speech are used to generate acoustic models represented by the \acp{HMM}. Thereby phonetic, linguistic and prosodic parameters are considered. {\color{ACMRed}Details about spectrum and excitation parameters?} In comparison to a unit-selection system the database only is needed in the training part.
+In Figure~\ref{fig:hmm} the structure of a typical \ac{HMM}-based synthesizer is shown. The whole system can be devided into two parts, the training and the synthesis part. The connection of these two parts is a set of context-dependent ({\color{ACMRed}what is that?}) \acp{HMM}. In the training part spectrum and excitation parameters of the recorded speech are used to generate acoustic models represented by the \acp{HMM}. Thereby phonetic, linguistic and prosodic parameters are considered. {\color{ACMRed}Details about spectrum and excitation parameters?} In comparison to a unit-selection system the database only is needed in the training part.
 
 \begin{figure}[h]
 	\includegraphics[width=0.8\columnwidth]{hmm-system.pdf}
-	\caption{Function blocks of \ac{HMM}-based synthesis \cite{zen:statistical}}
+	\caption{Function blocks of \ac{HMM}-based synthesis \cite{black:statistical}}
 	\label{fig:hmm}
 \end{figure}
 
-In the synthesis part first the text which is to be synthesized is 
+In the synthesis part first the text which is to be synthesized is transformed to a sequence of parameters containing information about the context ({\color{ACMRed}what context?}). According to this sequence the respective \acp{HMM} ({\color{ACMRed}what is that?}) are concatenated in order to form an utterance \ac{HMM}. Then after determining the state durations of the \acp{HMM} a sequence of coefficients is created, which finally is used to construct the speech waveform using a special filter ({\color{ACMRed}details?}).
 
-\newpage
+The main disadvantage of this approach compared to unit-selection synthesis is the quality of the synthesized speech. Three factors are accountable for the lack of quality: the vocoder, the modeling accuracy, and an effect called over-smoothing ({\color{ACMRed}details?}).
 
-The main disadvantage of this approach compared to unit-selection synthesis is the quality of the synthesized speech. Three factors are accountable for the lack of quality: vocoder, modeling accuracy, and over-smoothing.
+However there are some essential advantage, which makes the \ac{HMM}-based approach a competitive alternative to unit-selection synthesis. First, the voice characteristics can be modified without much effort Thus the implementation of different languages and the realization of different speaking styles with emotional emphasize is possible. Second, these just named aspects require a much smaller database than in unit-selection synthesis, since only a statistic represantation of speech segments rather than raw speech data is stored. 
 
-{\color{ACMRed}In Table~\ref{tab:speechgeneration} these techniques are compared regarding the most prominent advantages and drawbacks.}
+In Table~\ref{tab:speechgeneration} the up to here mentioned techniques are compared regarding the most prominent advantages and drawbacks.
 
 \begin{table}[h]
-	\caption{Comparison of speech generation methods~\cite{hinterleitner:quality, zen:statistical}}
+	\caption{Comparison of speech generation methods~\cite{hinterleitner:quality, black:statistical}}
 	\label{tab:speechgeneration}
 	\begin{tabularx}{1\columnwidth}{lYY}
 		\toprule
@@ -68,12 +68,16 @@ The main disadvantage of this approach compared to unit-selection synthesis is t
 	\end{tabularx}
 \end{table}
 
-
-\vspace{1em}\ \\
-\textbf{Why there is need to further improve this technology?}\\
-\textbf{What is a HMM?}
-
-\clearpage
+\begin{itemize}[leftmargin=10pt]
+	\bfseries\color{ACMRed}
+	\item (Relationship between the two approaches)
+	\item (Hybrid approaches)
+	\item Why there is need to further improve this technology?
+	\item What is a HMM?
+	\item Bring up MLPG (Maximum Likelyhood Parameter Generation)
+	\item Bring up Decision Tree
+	\item Robustness as additional advantage (source [10] in \cite{zen:deepstatistical})
+\end{itemize}
 
 
 %---------------------------------------------------------------------------------
@@ -85,15 +89,33 @@ The main disadvantage of this approach compared to unit-selection synthesis is t
 \section{\ac{SPSS} with Deep Learning Models}
 \label{sec:deepspeech}
 
-\subsection{General ways for improvement}
-\label{subsec:deepeffect}
-
-In \cite{hashimoto:effect} the effects of deep learning methods on \ac{SPSS} are investigated. Therefore the different parts of a \ac{HMM}-based speech synthesis system are modeled with a \ac{DNN} and then the output is compared to the conventional approach.
+{\color{ACMRed}In this section first different approaches of deploying deep learning models are investigated, as shown in \cite{hashimoto:effect} and then one specific approach is explained further, wherefore \cite{zen:deepstatistical} is used as reference.}
 
 \subsection{One specific approach for improvement}
 \label{subsec:deepspss}
 
-Statistical parametric speech synthesis using deep neural networks \cite{zen:deepstatistical}
+In the previous section we learned that the quality issue of \ac{HMM}-based speech synthesis is caused by three aspects, the vocoder, the accuracy of acoustic models and the over-smoothing effect. Zen \textit{et al.} \cite{zen:deepstatistical} suggest a specific approach to eliminate one of these causes, the accuracy of acoustic models, by allocating this task to a \ac{DNN}. In convential \ac{HMM}-based systems the mapping between context features (phonetic and linguistic properties) and speech parameters is done by decision tree based context clustering. Thereby the context-dependent \acp{HMM} are assigned to different clusters depending on a number of shared contexts. Each cluster is characterized by a specific set of contexts. In this way it is possible to estimate all \acp{HMM} in a robust way, with a typically sized training database.
+
+However decision trees soon reach their limits when handling complex contexts. Only by increasing the size and in this way decreasing the efficiency of the decision tree more complicated contexts (e.g. XOR) can be dealt with. In addition to that the training data gets fragmented and a limited set of parameters are used ... overfitting, lack of quality ([19] in \cite{zen:deepstatistical}). These downsides can be avoided by using a \ac{DNN} instead of multiple decision trees.
+
+
+Differences between decision trees and \acp{DNN}
+
+\ac{DNN}-based speech synthesis
+
+Experiments and results
+
+\clearpage
+
+\subsection{Other ways for improvement}
+\label{subsec:deepeffect}
+
+Although, the approach of \ac{SPSS} has brought many advantages over unit-selection synthesis, as shown in the previous section, the generated voice is still not as natural as desired. Therfore deep learning models recently have been used to further improve \ac{SPSS}. Since \acp{DNN} have proven to be very effective in speech recognition, they have found their way into speech synthesis. With the use of \acp{DNN} it is possible to represent higher dimensional and correlated features in an efficient way as well as compactly modeling complex mapping functions. Exactly these properties can be used in \ac{SPSS}, where different features representing the context (linguistic, prosody, etc.) have to be considered for the acoustic modeling \cite{hashimoto:effect}.
+
+In \cite{hashimoto:effect} the effects of deep learning methods on \ac{SPSS} are investigated. Therefore the different parts of a \ac{HMM}-based speech synthesis system are modeled with a \ac{DNN} and then the output is compared to the conventional approach.
+
+-> \textbf{other approach than DNN as acoustic model as in \cite{zen:deepstatistical}}
+
 
 %---------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------
@@ -113,11 +135,7 @@ What needs to be thought about when dealing with embedded or mobile devices?
 \subsection{\ac{HMM}-based Approach}
 \label{subsec:hmmembedded}
 
-An example of how speech synthesis can be implemented on embedded platform without deep learning (core paper~3).
-
 \subsection{Deep Learning-based Approach}
 \label{subsec:deepembedded}
-
-An example of how speech synthesis can be implemented on embedded platform WITH deep learning (core paper 4).
 
 \clearpage
