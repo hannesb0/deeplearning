@@ -95,13 +95,13 @@ In Table~\ref{tab:speechgeneration} the up to here mentioned techniques are comp
 
 In the previous section we learned that the quality issue of \ac{HMM}-based speech synthesis is caused by three aspects, the vocoder, the accuracy of acoustic models and the over-smoothing effect. Zen \textit{et al.} \cite{zen:deepstatistical} suggest a specific approach to eliminate one of these causes, the accuracy of acoustic models, by allocating this task to a \ac{DNN}. In convential \ac{HMM}-based systems the mapping between context features (phonetic and linguistic properties) and speech parameters is done by decision tree based context clustering. Thereby the context-dependent \acp{HMM} are assigned to different clusters depending on the combination of contexts using binary decision trees. Each cluster is characterized by a specific set of speech parameters. In this way it is possible to estimate all \acp{HMM} in a robust way, with a typically sized training database.
 
-However decision trees soon reach their limits when handling complex contexts. Only by increasing the size and in this way decreasing the efficiency of the decision tree more complicated contexts (e.g. XOR) can be dealt with. 
+However decision trees soon reach their limits when handling complex contexts. Only by increasing the size and in this way decreasing the efficiency of the decision tree more complicated contexts (\textit{e.g.} XOR) can be dealt with. 
 
 In addition to that decision require partitioned input data with each partition having a different set of parameters. In this way whith less data per region overfitting (weak generalization) is likely to happen, which then results in a lack of quality. These downsides can be avoided by using a \ac{DNN} instead of multiple decision trees.
 
-But the use of a \ac{DNN} also introduces two disadvantages: The first one arises in terms of computational power. Both in the training and in the prediction stage decision trees require much less operations (total amount and level of complexity) than \acp{DNN}. The second one has to do with the decision process in its basic form. With decision trees a binary question has to be answered, whilst a \ac{DNN} consists of weighted neurons, which use non-linear activation functions (e.g. \textit{sigmoid}, \textit{tanh}, \textit{ReLU} \cite{chung:activation}) to determine their state. As consequence of that interpretable rules are far easier to produce with decision trees, than with \acp{DNN}.
+But the use of a \ac{DNN} also introduces two disadvantages: The first one arises in terms of computational power. Both in the training and in the prediction stage decision trees require much less operations (total amount and level of complexity) than \acp{DNN}. The second one has to do with the decision process in its basic form. With decision trees a binary question has to be answered, whilst a \ac{DNN} consists of weighted neurons, which use non-linear activation functions (\textit{e.g.} sigmoid, tanh, ReLU \cite{chung:activation}) to determine their state. As consequence of that interpretable rules are far easier to produce with decision trees, than with \acp{DNN}.
 
-In Figure~\ref{fig:dnnspeech} the structure of a \ac{DNN}-based speech synthesis system is shown. First a sequence of input features is generated after analysing the input text. These parameters contain numeric values like the number of words in a sentence or the duration of a phoneme as well as binary answers to questions like ,,is the current phoneme \textit{aa}?''. Then this parameter sequence is fed into the \ac{DNN} where a mapping to output features is deployed by using forward propagation. The \ac{DNN} has to be trained sometime before with pairs of input and output features from a database. In the following steps the speech parameters are extracted from the statistics of the output features and the voice waveform in turn generated from the speech parameters. this is done in the same way as in the \ac{HMM}-based system. For this system the function blocks of text analysis, parameter generation, and waveform synthesis can be reused from a \ac{HMM}-based system. Only the mapping from input features (e.g. linguistic contexts) to output features (spectral and excitation parameters) is implemented in a different way.
+In Figure~\ref{fig:dnnspeech} the structure of a \ac{DNN}-based speech synthesis system is shown. First a sequence of input features is generated after analysing the input text. These parameters contain numeric values like the number of words in a sentence or the duration of a phoneme as well as binary answers to questions like ''is the current phoneme \textit{aa}?''. Then this parameter sequence is fed into the \ac{DNN} where a mapping to output features is deployed by using forward propagation. The \ac{DNN} has to be trained sometime before with pairs of input and output features from a database. In the following steps the speech parameters are extracted from the statistics of the output features and the voice waveform in turn generated from the speech parameters. this is done in the same way as in the \ac{HMM}-based system. For this system the function blocks of text analysis, parameter generation, and waveform synthesis can be reused from a \ac{HMM}-based system. Only the mapping from input features (\textit{e.g.} linguistic contexts) to output features (spectral and excitation parameters) is implemented in a different way.
 
 \begin{figure}[h]
 	\includegraphics[width=0.9\columnwidth]{dnn-speech-small.pdf}
@@ -109,10 +109,19 @@ In Figure~\ref{fig:dnnspeech} the structure of a \ac{DNN}-based speech synthesis
 	\label{fig:dnnspeech}
 \end{figure}
 
-Experiments and results: Objective and subjective evaluation; DNNs with different number of units/layer (256- 2048)
+To compare the output of the above describe framework with that of a \ac{HMM}-based, Zen \textit{et al.} conducted some experiments with each a \ac{HMM}-based and a \ac{DNN}-based speech synthesis system in \cite{zen:deepstatistical}. Therefore they used the same speech data in US English which includes about 33\,000 utterances for both systems. 
 
-\vspace{5em}
+The \ac{HMM}-based system used 2\,554 questions for the decision tree-based context clustering. To influence the size of the decision trees the scaling factor $\alpha$ is used, where a high value results in a small decision tree and $\alpha = 1$ denotes a typical \ac{HMM}-based system.
 
+342 binary features (\textit{e.g.} phonemes identities) and 25 numerical features (\textit{e.g.} number of syllables in a word) represent the input features of the \ac{DNN}-based system. As activation function the sigmoid function is used, since the authors experienced superiour performance of this type in previous tests. In total one network with different number of layers (1, 2, 3, 4, or 5) and units per layer (256, 1\,024, or 2\,048) are used.
+
+\vspace{2em}
+
+Objective\footnote{blablabla}
+
+\vspace{2em}
+
+As subjective evaluation the generated speech is played back to a number of listeners, who then choose which synthesis is prefered. If no difference is perceived the option ''neutral'' can be selected. In this test the same number of parameters for both systems are used. For the structure of the \ac{DNN}-based approach 4 layers with a different number of units per layer were applied. In Table~\ref{tab:subeval} the outcome of the subjective evaluation is shown. Unmistakably the speech generated with the \ac{DNN}-based systems were preferred, regardless of the amount of units per layer. The listeners described them as less muffled.
 
 \begin{table}[h]
 	\caption{Subjective scores (in \%) of speech samples in  ~\cite{zen:deepstatistical}}
@@ -131,7 +140,7 @@ Experiments and results: Objective and subjective evaluation; DNNs with differen
 
 Conclusions: Improved performance for predicting spectral and excitation parameters. More natural sounding voice. BUT: Higher computational costs both at training and prediction stage.
 
-\newpage
+\vspace{2em}
 
 \subsection{Other ways for improvement}
 \label{subsec:deepeffect}
