@@ -7,7 +7,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			06 June 2017												%%
+%% Date:			07 June 2017												%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -57,9 +57,9 @@ In Table~\ref{tab:speechgeneration} the up to here mentioned techniques are comp
 \begin{table}[h]
 	\caption{Comparison of speech generation methods~\cite{hinterleitner:quality, black:statistical}}
 	\label{tab:speechgeneration}
-	\begin{tabularx}{1\columnwidth}{lYY}
+	\begin{tabularx}{1\columnwidth}{cYY}
 		\toprule
-		Technique & Advantages & Drawbacks\\
+		\textbf{Technique} & \textbf{Advantages} & \textbf{Drawbacks}\\
 		\midrule
 		Formant-based & No prerecorded speech required & Very artificial and metallic voice\\[0.5em]
 		Unit-selection & Very high voice quality possible & Large database required\\[0.5em]
@@ -101,18 +101,37 @@ In addition to that decision require partitioned input data with each partition 
 
 But the use of a \ac{DNN} also introduces two disadvantages: The first one arises in terms of computational power. Both in the training and in the prediction stage decision trees require much less operations (total amount and level of complexity) than \acp{DNN}. The second one has to do with the decision process in its basic form. With decision trees a binary question has to be answered, whilst a \ac{DNN} consists of weighted neurons, which use non-linear activation functions (e.g. \textit{sigmoid}, \textit{tanh}, \textit{ReLU} \cite{chung:activation}) to determine their state. As consequence of that interpretable rules are far easier to produce with decision trees, than with \acp{DNN}.
 
-In Figure~\ref{fig:dnnspeech} the structure of 
+In Figure~\ref{fig:dnnspeech} the structure of a \ac{DNN}-based speech synthesis system is shown. First a sequence of input features is generated after analysing the input text. These parameters contain numeric values like the number of words in a sentence or the duration of a phoneme as well as binary answers to questions like ,,is the current phoneme \textit{aa}?''. Then this parameter sequence is fed into the \ac{DNN} where a mapping to output features is deployed by using forward propagation. The \ac{DNN} has to be trained sometime before with pairs of input and output features from a database. In the following steps the speech parameters are extracted from the statistics of the output features and the voice waveform in turn generated from the speech parameters. this is done in the same way as in the \ac{HMM}-based system. For this system the function blocks of text analysis, parameter generation, and waveform synthesis can be reused from a \ac{HMM}-based system. Only the mapping from input features (e.g. linguistic contexts) to output features (spectral and excitation parameters) is implemented in a different way.
 
 \begin{figure}[h]
-	\includegraphics[width=0.9\columnwidth]{dnn-speech.pdf}
+	\includegraphics[width=0.9\columnwidth]{dnn-speech-small.pdf}
 	\caption{Speech synthesis based on \ac{DNN} \cite{zen:deepstatistical}}
 	\label{fig:dnnspeech}
 \end{figure}
 
+Experiments and results: Objective and subjective evaluation; DNNs with different number of units/layer (256- 2048)
 
-Experiments and results
+\vspace{5em}
 
-\clearpage
+
+\begin{table}[h]
+	\caption{Subjective scores (in \%) of speech samples in  ~\cite{zen:deepstatistical}}
+	\label{tab:subeval}
+	\begin{tabularx}{0.7\columnwidth}{cYc}
+		\toprule
+		\textbf{\ac{HMM}} & \textbf{\ac{DNN}} & \textbf{Neutral}\\
+		($\alpha$) & (layers $\times$ units) & \\
+		\midrule
+		15.8 (16) & 38.5 (4 $\times$ 256) & 45.7\\[0.5em]
+		16.1 (4) & 27.2 (4 $\times$ 512) & 56.8\\[0.5em]
+		12.7 (1) & 36.6 (4 $\times$ 1\,024) & 50.7\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+Conclusions: Improved performance for predicting spectral and excitation parameters. More natural sounding voice. BUT: Higher computational costs both at training and prediction stage.
+
+\newpage
 
 \subsection{Other ways for improvement}
 \label{subsec:deepeffect}
@@ -123,6 +142,7 @@ In \cite{hashimoto:effect} the effects of deep learning methods on \ac{SPSS} are
 
 -> \textbf{other approach than DNN as acoustic model as in \cite{zen:deepstatistical}}
 
+\newpage
 
 %---------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------
