@@ -5,7 +5,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			23 May 2017													%%
+%% Date:			07 June 2017												%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -70,7 +70,11 @@
 \fi
 
 % define new column type for the tabularx environment
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+% use these macro, if only header has to be centered
+\newcommand*{\theadbld}[1]{\multicolumn{1}{c}{\bfseries #1}}
+\newcommand*{\thead}[1]{\multicolumn{1}{c}{#1}}
 
 % removes running headers
 \pagestyle{plain}
