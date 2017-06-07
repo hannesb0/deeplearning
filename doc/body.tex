@@ -79,7 +79,6 @@ In Table~\ref{tab:speechgeneration} the up to here mentioned techniques are comp
 	\item Robustness as additional advantage (source [10] in \cite{zen:deepstatistical})
 \end{itemize}
 
-
 %---------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------
 % SPSS with Deep Learning Models
@@ -94,14 +93,22 @@ In Table~\ref{tab:speechgeneration} the up to here mentioned techniques are comp
 \subsection{One specific approach for improvement}
 \label{subsec:deepspss}
 
-In the previous section we learned that the quality issue of \ac{HMM}-based speech synthesis is caused by three aspects, the vocoder, the accuracy of acoustic models and the over-smoothing effect. Zen \textit{et al.} \cite{zen:deepstatistical} suggest a specific approach to eliminate one of these causes, the accuracy of acoustic models, by allocating this task to a \ac{DNN}. In convential \ac{HMM}-based systems the mapping between context features (phonetic and linguistic properties) and speech parameters is done by decision tree based context clustering. Thereby the context-dependent \acp{HMM} are assigned to different clusters depending on a number of shared contexts. Each cluster is characterized by a specific set of contexts. In this way it is possible to estimate all \acp{HMM} in a robust way, with a typically sized training database.
+In the previous section we learned that the quality issue of \ac{HMM}-based speech synthesis is caused by three aspects, the vocoder, the accuracy of acoustic models and the over-smoothing effect. Zen \textit{et al.} \cite{zen:deepstatistical} suggest a specific approach to eliminate one of these causes, the accuracy of acoustic models, by allocating this task to a \ac{DNN}. In convential \ac{HMM}-based systems the mapping between context features (phonetic and linguistic properties) and speech parameters is done by decision tree based context clustering. Thereby the context-dependent \acp{HMM} are assigned to different clusters depending on the combination of contexts using binary decision trees. Each cluster is characterized by a specific set of speech parameters. In this way it is possible to estimate all \acp{HMM} in a robust way, with a typically sized training database.
 
-However decision trees soon reach their limits when handling complex contexts. Only by increasing the size and in this way decreasing the efficiency of the decision tree more complicated contexts (e.g. XOR) can be dealt with. In addition to that the training data gets fragmented and a limited set of parameters are used ... overfitting, lack of quality ([19] in \cite{zen:deepstatistical}). These downsides can be avoided by using a \ac{DNN} instead of multiple decision trees.
+However decision trees soon reach their limits when handling complex contexts. Only by increasing the size and in this way decreasing the efficiency of the decision tree more complicated contexts (e.g. XOR) can be dealt with. 
 
+In addition to that decision require partitioned input data with each partition having a different set of parameters. In this way whith less data per region overfitting (weak generalization) is likely to happen, which then results in a lack of quality. These downsides can be avoided by using a \ac{DNN} instead of multiple decision trees.
 
-Differences between decision trees and \acp{DNN}
+But the use of a \ac{DNN} also introduces two disadvantages: The first one arises in terms of computational power. Both in the training and in the prediction stage decision trees require much less operations (total amount and level of complexity) than \acp{DNN}. The second one has to do with the decision process in its basic form. With decision trees a binary question has to be answered, whilst a \ac{DNN} consists of weighted neurons, which use non-linear activation functions (e.g. \textit{sigmoid}, \textit{tanh}, \textit{ReLU} \cite{chung:activation}) to determine their state. As consequence of that interpretable rules are far easier to produce with decision trees, than with \acp{DNN}.
 
-\ac{DNN}-based speech synthesis
+In Figure~\ref{fig:dnnspeech} the structure of 
+
+\begin{figure}[h]
+	\includegraphics[width=0.9\columnwidth]{dnn-speech.pdf}
+	\caption{Speech synthesis based on \ac{DNN} \cite{zen:deepstatistical}}
+	\label{fig:dnnspeech}
+\end{figure}
+
 
 Experiments and results
 
