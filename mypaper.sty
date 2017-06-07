@@ -59,6 +59,62 @@
 \def\mysubsecfont{\bfseries\Large\section@raggedright}
 \let\@subsecfont\mysubsecfont
 
+
+% redefine some spacings in the header
+\newcommand\myskipbeforeauthor{\vspace{1em}}
+\newcommand\myskipbeforeinstitution{\vspace{0.25em}}
+\newcommand\myskipbeforeemail{\vspace{0.25em}}
+\newcommand\myskipafteremail{\vspace{2em}}
+% default value for spacing after email
+%\newcommand\myskipafteremail{\bigskip}
+
+\def\mymkauthors{%
+	\author@bx@wd=\textwidth\relax
+	\advance\author@bx@wd by -\author@bx@sep\relax
+	\ifcase\num@authorgroups
+	\relax % 0?
+	\or  % 1=one author per row
+	\or  % 2=two authors per row
+	\divide\author@bx@wd by \num@authorgroups\relax
+	\or  % 3=three authors per row
+	\divide\author@bx@wd by \num@authorgroups\relax
+	\or  % 4=two authors per row (!)
+	\divide\author@bx@wd by 2\relax
+	\else % three authors per row
+	\divide\author@bx@wd by 3\relax
+	\fi
+	\advance\author@bx@wd by -\author@bx@sep\relax
+	\gdef\@currentauthors{}%
+	\gdef\@currentaffiliation{}%
+	\def\@author##1{\ifx\@currentauthors\@empty
+		\gdef\@currentauthors{\par##1\myskipbeforeinstitution}%
+		\else
+		\g@addto@macro\@currentauthors{\par##1}%
+		\fi
+		\gdef\and{}}%
+	\def\email##1##2{\ifx\@currentaffiliation\@empty
+		\gdef\@currentaffiliation{\nolinkurl{##2}}%
+		\else
+		\g@addto@macro\@currentaffiliation{\par\myskipbeforeemail\nolinkurl{##2}}%
+		\fi}%
+	\def\affiliation##1##2{\ifx\@currentaffiliation\@empty
+		\gdef\@currentaffiliation{%
+			\setkeys{@ACM@affiliation@}{obeypunctuation=false}%
+			\setkeys{@ACM@affiliation@}{##1}##2}%
+		\else
+		\g@addto@macro\@currentaffiliation{\par
+			\setkeys{@ACM@affiliation@}{obeypunctuation=false}%
+			\setkeys{@ACM@affiliation@}{##1}##2}%
+		\fi
+		\global\let\and\@typeset@author@bx
+	}%
+	\hsize=\textwidth
+	\global\setbox\mktitle@bx=\vbox{\noindent
+	\box\mktitle@bx\par\myskipbeforeauthor\leavevmode
+	\lineskip=1pc\relax\centering\hspace*{-1em}%
+	\addresses\let\and\@typeset@author@bx\and\par\myskipafteremail}}
+\let\@mkauthors\mymkauthors
+
 % redefine subsubsection layout (if not using titlesec)
 \ifdefined\TITLESEC
 
