@@ -5,7 +5,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			07 June 2017												%%
+%% Date:			09 June 2017												%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -58,7 +58,6 @@
 % redefine subsection font
 \def\mysubsecfont{\bfseries\Large\section@raggedright}
 \let\@subsecfont\mysubsecfont
-
 
 % redefine some spacings in the header
 \newcommand\myskipbeforeauthor{\vspace{1em}}
@@ -131,6 +130,9 @@
 % use these macro, if only header has to be centered
 \newcommand*{\theadbld}[1]{\multicolumn{1}{c}{\bfseries #1}}
 \newcommand*{\thead}[1]{\multicolumn{1}{c}{#1}}
+
+% set the vertical alignment of rows to center
+\def\tabularxcolumn#1{m{#1}}
 
 % removes running headers
 \pagestyle{plain}
