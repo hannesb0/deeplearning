@@ -7,7 +7,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			07 June 2017												%%
+%% Date:			09 June 2017												%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -21,7 +21,7 @@
 
 Speech synthesis has emerged over the last 10 years due to a vast contribution by the global community of researchers and the increasing computational power for data processing. Its quality and naturalness has increased steadily and different approaches have been developed so far \cite{suendermann:challenges}. The typical applications like navigation systems in cars or telephone-based dialogue systems are nowadays widely established. But also as reading aid for visually impaired people \cite{readspeaker:tts} or as in the case of the famous scientist Stephen Hawking, who has been using a synthesized voice to communicate since 1997 \cite{hawking:speech}, speech synthesis has proven to be very useful. Another very interesting application of speech synthesis is shown in [XX]. The author proposed to introduce synthetic speech as means of communication between pilots, since there have been many accidents due to missunderstandings at radio-based communication. %Finally the interaction between man and machines or robots \cite{hill:manmachine}
 
-According to \cite{hinterleitner:quality} speech synthesis can be divided into three types: Canned speech, \ac{CTS} and \ac{TTS}. Canned speech more or less is the replay of prerecorded spoken sentences or words with none or very little adjustments. A typical example are the announcements on train stations. Because of the high effort of recording everything (almost) exactly as it is replayed, this approach is limited to only a few simple applications. With \ac{CTS} the waveform is generated out of a linguistic description without any information of the respective text. In this way no natural language processing is required, but nevertheless \ac{CTS} nowadays has not made any important impact. The last and most promising type is \ac{TTS}.
+According to \cite{hinterleitner:quality} speech synthesis can be divided into three types: Canned speech, \ac{CTS} and \ac{TTS}. Canned speech more or less is the play back of prerecorded spoken sentences or words with none or very little adjustments. A typical example are the announcements on train stations. Because of the high effort of recording everything (almost) exactly as it is played back, this approach is limited to only a few simple applications. With \ac{CTS} the waveform is generated out of a linguistic description without any information of the respective text. In this way no natural language processing is required, but nevertheless \ac{CTS} nowadays has not made any important impact. The last and most promising type is \ac{TTS}.
 
 A \ac{TTS} system consists of a \ac{NLP} part, where the text is analysed and the word and sentence structure and accents are extracted. In the next step these accents are used to generate the prosody of the given text like duration, intensity and pitch. Then the created phonetic represantations with prosody information are stringed together to a continuous stream of signal parameters. The last task, the speech generation, uses this stream to generate the respective waveform. This function block can be implemented in different ways. In \cite{hinterleitner:quality} three general approaches are named as follows: Parametric Speech Synthesis (formant-based synthesis), Concatenative Speech Synthesis (unit-selection synthesis) and Statistical Parametric Speech Synthesis (\ac{HMM}-based synthesis). The methods in brackets are the respective implementations, which are most commonly used. 
 
@@ -61,23 +61,14 @@ In Table~\ref{tab:speechgeneration} the up to here mentioned techniques are comp
 		\toprule
 		\textbf{Technique} & \textbf{Advantages} & \textbf{Drawbacks}\\
 		\midrule
-		Formant-based & No prerecorded speech required & Very artificial and metallic voice\\[0.5em]
-		Unit-selection & Very high voice quality possible & Large database required\\[0.5em]
-		\ac{HMM}-based & Adjustable voice and small footprint & Voice sounds muffled\\
+		Formant-based & No prerecorded speech required & Very artificial and metallic voice\\
+		& & \\[-0.5em]
+		Unit-selection & Very high voice quality possible & Large database required\\
+		& & \\[-0.5em]
+		\ac{HMM}-based & Adjustable voice and small footprint & Voice sounds \ \ muffled\\
 		\bottomrule
 	\end{tabularx}
 \end{table}
-
-\begin{itemize}[leftmargin=10pt]
-	\bfseries\color{ACMRed}
-	\item (Relationship between the two approaches)
-	\item (Hybrid approaches)
-	\item Why there is need to further improve this technology?
-	\item What is a HMM?
-	\item Bring up MLPG (Maximum Likelyhood Parameter Generation)
-	\item Bring up Decision Tree
-	\item Robustness as additional advantage (source [10] in \cite{zen:deepstatistical})
-\end{itemize}
 
 %---------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------
@@ -87,6 +78,8 @@ In Table~\ref{tab:speechgeneration} the up to here mentioned techniques are comp
 
 \section{\ac{SPSS} with Deep Learning Models}
 \label{sec:deepspeech}
+
+{\color{ACMRed}Although, the approach of \ac{SPSS} has brought many advantages over unit-selection synthesis, as shown in the second chapter, the generated voice is still not as natural as desired. Therfore deep learning models recently have been used to further improve \ac{SPSS}. Since \acp{DNN} have proven to be very effective in speech recognition, they have found their way into speech synthesis. With the use of \acp{DNN} it is possible to represent higher dimensional and correlated features in an efficient way as well as compactly modeling complex mapping functions. Exactly these properties can be used in \ac{SPSS}, where different features representing the context (linguistic, prosody, etc.) have to be considered for the acoustic modeling \cite{hashimoto:effect}.}
 
 {\color{ACMRed}In this section first different approaches of deploying deep learning models are investigated, as shown in \cite{hashimoto:effect} and then one specific approach is explained further, wherefore \cite{zen:deepstatistical} is used as reference.}
 
@@ -104,7 +97,7 @@ But the use of a \ac{DNN} also introduces two disadvantages: The first one arise
 In Figure~\ref{fig:dnnspeech} the structure of a \ac{DNN}-based speech synthesis system is shown. First a sequence of input features is generated after analysing the input text. These parameters contain numeric values like the number of words in a sentence or the duration of a phoneme as well as binary answers to questions like ''is the current phoneme \textit{aa}?''. Then this parameter sequence is fed into the \ac{DNN} where a mapping to output features is deployed by using forward propagation. The \ac{DNN} has to be trained sometime before with pairs of input and output features from a database. In the following steps the speech parameters are extracted from the statistics of the output features and the voice waveform in turn generated from the speech parameters. this is done in the same way as in the \ac{HMM}-based system. For this system the function blocks of text analysis, parameter generation, and waveform synthesis can be reused from a \ac{HMM}-based system. Only the mapping from input features (\textit{e.g.} linguistic contexts) to output features (spectral and excitation parameters) is implemented in a different way.
 
 \begin{figure}[h]
-	\includegraphics[width=0.9\columnwidth]{dnn-speech-small.pdf}
+	\includegraphics[width=0.8\columnwidth]{dnn-speech-small.pdf}
 	\caption{Speech synthesis based on \ac{DNN} \cite{zen:deepstatistical}}
 	\label{fig:dnnspeech}
 \end{figure}
@@ -115,13 +108,9 @@ The \ac{HMM}-based system used 2\,554 questions for the decision tree-based cont
 
 342 binary features (\textit{e.g.} phonemes identities) and 25 numerical features (\textit{e.g.} number of syllables in a word) represent the input features of the \ac{DNN}-based system. As activation function the sigmoid function is used, since the authors experienced superiour performance of this type in previous tests. In total one network with different number of layers (1, 2, 3, 4, or 5) and units per layer (256, 1\,024, or 2\,048) are used.
 
-\vspace{2em}
+The objective evaluation showed that the \ac{DNN}-based system achieved better performance in voiced/unvoiced classification and aperiodicity prediction, regardless of the number of layers or the units per layer. At the Mel-cepstral disortion only \acp{DNN} with three or more layers outperformed the \ac{HMM}-based system\footnote{\textbf{\color{ACMRed}further explanation}}. 
 
-Objective\footnote{blablabla}
-
-\vspace{2em}
-
-As subjective evaluation the generated speech is played back to a number of listeners, who then choose which synthesis is prefered. If no difference is perceived the option ''neutral'' can be selected. In this test the same number of parameters for both systems are used. For the structure of the \ac{DNN}-based approach 4 layers with a different number of units per layer were applied. In Table~\ref{tab:subeval} the outcome of the subjective evaluation is shown. Unmistakably the speech generated with the \ac{DNN}-based systems were preferred, regardless of the amount of units per layer. The listeners described them as less muffled.
+As subjective evaluation 173 test sentences each synthesized with the \ac{DNN}- and the \ac{HMM}-based systems were played back to a number of listeners, who then choose which synthesis they prefered. If no difference is perceived the option ''neutral'' can be selected. In this test the same number of parameters for both systems are used. For the structure of the \ac{DNN}-based approach 4 layers with a different number of units per layer were applied. In Table~\ref{tab:subeval} the outcome of the subjective evaluation is shown. Unmistakably the speech generated with the \ac{DNN}-based systems were preferred, regardless of the amount of units per layer. The listeners described them as less muffled.
 
 \begin{table}[h]
 	\caption{Subjective scores (in \%) of speech samples in  ~\cite{zen:deepstatistical}}
@@ -138,20 +127,50 @@ As subjective evaluation the generated speech is played back to a number of list
 	\end{tabularx}
 \end{table}
 
-Conclusions: Improved performance for predicting spectral and excitation parameters. More natural sounding voice. BUT: Higher computational costs both at training and prediction stage.
-
-\vspace{2em}
+In conclusion it can be stated, that a \ac{DNN}-based approach to implement the acoustic model\footnote{\textbf{\color{ACMRed} other word here???}} of a speech synthesis system is a reasonable alternative to the conventional decision tree-based strategy. The improved performance for predicting spectral and excitation parameters and the more natural sounding voice both show the potential of the \ac{DNN}-based approach for speech synthesis. However the higher computational costs both at training and prediction stage due to more complex arithmetic operations in the \ac{DNN}-based approach indicate where future work should be focused.
 
 \subsection{Other ways for improvement}
 \label{subsec:deepeffect}
 
-Although, the approach of \ac{SPSS} has brought many advantages over unit-selection synthesis, as shown in the previous section, the generated voice is still not as natural as desired. Therfore deep learning models recently have been used to further improve \ac{SPSS}. Since \acp{DNN} have proven to be very effective in speech recognition, they have found their way into speech synthesis. With the use of \acp{DNN} it is possible to represent higher dimensional and correlated features in an efficient way as well as compactly modeling complex mapping functions. Exactly these properties can be used in \ac{SPSS}, where different features representing the context (linguistic, prosody, etc.) have to be considered for the acoustic modeling \cite{hashimoto:effect}.
+The previous section focused on the impact a \ac{DNN} has by representing the acoustic model of a speech synthesis system. However deep learning models can be deployed in other parts of \ac{SPSS} as well. In \cite{hashimoto:effect} different ways on how to implement a \ac{DNN} into a speech synthesis are investigated. Therefore the different parts of a \ac{HMM}-based speech synthesis system once are modeled with a \ac{DNN} and once with the conventional technique and then the results are compared in an objective and a subjective fashion.
 
-In \cite{hashimoto:effect} the effects of deep learning methods on \ac{SPSS} are investigated. Therefore the different parts of a \ac{HMM}-based speech synthesis system are modeled with a \ac{DNN} and then the output is compared to the conventional approach.
+Hashimoto \textit{et al.} concentrated on two core components of a speech synthesis system, the acoustic models and the speech generation part. In Figure~\ref{fig:generalspeech} you can see the simplified structure of a speech synthesis system. In the first block the text is analysed and the contextual features are extracted (A). These are then converted to static and dynamic acoustic features (B) by the acoustic models. The parameter generation block then uses these acoustic featuers to create speech parameters (C). In the last step the speech waveform is synthesized.
 
--> \textbf{other approach than DNN as acoustic model as in \cite{zen:deepstatistical}}
+\begin{figure}[h]
+	\includegraphics[width=0.8\columnwidth]{speech-general.pdf}
+	\caption{Simplified structure of speech synthesis system \cite{hashimoto:effect}}
+	\label{fig:generalspeech}
+\end{figure}
 
-\newpage
+The two gray-colored blocks in Figure~\ref{fig:generalspeech} are subject of two experiments conducted in \cite{hashimoto:effect}. The conventional approach for the acoustic models is the use of decision tree clustered \acp{HMM}, whereas the parameter generation usually is implemented by a \ac{MLPG} algorithm. As seen in Section~\ref{subsec:deepspss} the acoustic models can be represented by a \ac{DNN}. Hashimoto \textit{et al.} also included this approach in their experiments but furthermore used a \ac{DNN} for the speech parameter generation task.
+
+In Table~\ref{tab:experiments} the systems resulting of the different combinations of the deployment of either conventional or \ac{DNN}-based approach are shown. The systems I~-~IV are part of experiment~1 and all systems except system~IV are part of experiment~2.
+
+\begin{table}[h]
+	\caption{Different systems within the experiments \cite{hashimoto:effect}}
+	\label{tab:experiments}
+	\centering
+	\resizebox{1\columnwidth}{!}{
+		\begin{minipage}{\columnwidth}
+			\begin{tabularx}{1\linewidth}{X>{\hsize2em}Y>{\hsize2em}Y>{\hsize2em}Y>{\hsize1.75em}Y>{\hsize2.5em}Y>{\hsize2.6em}Y}
+				\toprule
+				\textbf{System Nr.}& \textbf{I} & \textbf{II} & \textbf{III} & \textbf{IV} & \textbf{V} & \textbf{VI}\\
+				\midrule
+				Experiments & 1\,\&\,2 & 1\,\&\,2 & 1\,\&\,2 & 1 & 2 & 2\\
+				&&&&&&\\[-0.7em]
+				Acoustic \ \ \ models & \ac{HMM} & \ac{HMM} & \ac{DNN} & \ac{DNN} & \ac{HMM} & \ac{HMM}\\
+				&&&&&&\\[-0.7em]
+				Speech \ \ \ \ \ \ \ \ \ \ generation & \ac{MLPG} & \ac{DNN} & \ac{MLPG} & \ac{DNN} & \ac{DNN}~+ \ac{MLPG} & \ac{MLPG} +~\ac{DNN}\\
+				\bottomrule
+			\end{tabularx}
+		\end{minipage}}
+\end{table}
+
+In experiment~1 all \acp{DNN} are equipped with three hidden layers and different number of units per layers (256, 512, or 1\,024) and the size of the decision trees was controlled similar as in \cite{zen:deepstatistical}. As objective evaluation only the Mel-cepstral distortion was used. Here the systems with a \ac{DNN} (system~II~-~IV) all outperformed system~I in a similar way, as soon as they had 512 or more units per layer. For the subjective evaluation 20 sentences were played back to 8 listeners who had to assign a naturalness score between 1 and 5 (with 5 being the most natural). After applying the mean opinion score test method, system~III was most preferred with 3.53 followed by system~IV with 3.17 and system~I with 3.08. The less natural sounding voice accoring to the listeners was produced by system~II. From these results it can be concluded, that the speech generation part implemented with \ac{MLPG} (system~I \& III) produces a more natural output than those with a \ac{DNN} (system~II \& IV) \footnote{\textbf{\color{ACMRed}Reasons: parameter trajectories}}.
+
+Due to these outcomes experiment~2 introduces two new test cases, system~V and system~VI. For the parameter generation task a combination of \ac{MLPG} and \ac{DNN} is used, for which the respective input and output features where adapted. Again once an objective and a subjective evalution like in experiment~1 were conducted. The objective evaluation basically showed the same trend as in experiment~1, as soon as 512 ore more units per layer were used, the Mel-cepstral distortion was less than with the conventional approach (system~I). In the subjective evaluation the two new systems (V~\&~VI) both were preferred over system~I, with system~VI being the most preferred system of this experiment. System~III again was better and system~II again was evaluated less natural than system~I.
+
+As conclusion, we see, that the experiments conducted in \cite{hashimoto:effect} confirmed the results of \cite{zen:deepstatistical}, that the decision tree-clustered \acp{HMM} can be replaced by a \ac{DNN} to improve both the prediction performance as well as the naturalness of the generated speech. Beyond that Hashimoto \textit{et al.} demonstrated, that it is worthwile to go one step further and deploy an additional \ac{DNN} as postfiltering block into the parameter generation task of the speech synthesis system to even further improve the above named results.
 
 %---------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------
