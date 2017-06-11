@@ -5,7 +5,7 @@
 %% Type of work:	Advanced Seminar											%%
 %% Author:			Hannes Bohnengel											%%
 %% Mentor:			Debayan Roy													%%
-%% Date:			10 June 2017												%%
+%% Date:			11 June 2017												%%
 %% University:		Technical University of Munich								%%
 %% Comments:		Created in texstudio with tab width = 4						%%
 %%																				%%
@@ -14,7 +14,7 @@
 %---- Define document class ------------------------------------------------------
 
 % copied acmart.cls to /usr/share/texlive/texmf-dist/tex
-\documentclass[format=sigconf, review=false, screen=true, timestamp=false, authordraft=false, 9pt]{acmart}
+\documentclass[format=sigconf, review=false, screen=false, timestamp=false, authordraft=false, 9pt]{acmart}
 
 %---- Define used packages -------------------------------------------------------
 
@@ -42,13 +42,17 @@
 %---- Adjust some layout stuff ---------------------------------------------------
 	
 	% Paper margins
-	\newgeometry{left=2cm,right=2cm,top=1.5cm,bottom=2.0cm, footskip=1cm}
+	\newgeometry{left=1.8cm,right=1.8cm,top=1.5cm,bottom=2.0cm, footskip=1cm}
 	
 	% This is the default geometry:
 	%\geometry{twoside=true, head=13pt, paperwidth=8.5in, paperheight=11in, includeheadfoot, columnsep=2pc, top=57pt, bottom=73pt, inner=54pt, outer=54pt, marginparwidth=2pc}
 	
 	% Column spacing
 	\setlength{\columnsep}{0.8cm}
+	
+%---- Input abbreviations ---------------------------------------------------------			
+
+\input{doc/abbreviations.tex}	
 	
 %---- Input abstract text --------------------------------------------------------			
 	
@@ -62,10 +66,6 @@
 	
 	% If the default list of authors is too long for headers}
 	%\renewcommand{\shortauthors}{H.Bohnengel}
-	
-%---- Input abbreviations ---------------------------------------------------------			
-	
-	\input{doc/abbreviations.tex}
 	
 %---- Input main text -------------------------------------------------------------		
 	
@@ -84,8 +84,6 @@
 	\bibliography{bib/bibliography}
 
 %---- TO BE REMOVED ---------------------------------------------------------------	
-	
-	\clearpage
 	
 	\input{doc/remarks.tex}
 	
