@@ -1,0 +1,23 @@
+
+To think about:
+===============
+
+- division of TTS system in front- and backend
+- conclusion of section 4.2 (optimized HMM) -> if presented
+- Version of functional diagram -> more basic & and only synthesis part ??
+- What is a HMM?
+- What is auto encoder? -> if presented this paper
+- Bring up MLPG (Maximum Likelyhood Parameter Generation)
+- Bring up Decision Trees
+
+
+Tips from Debayan:
+==================
+
+- not necessarily all content of paper in presentation
+- citing in short format: Author (Title) Conference Year
+- Scope: 15 - 20 slides
+- not to filled and not to empty
+  -> good looking
+- overview picture of speech synthesis -> brief general introduction of TTS
+- QA: acknowledge questions and be very polite
