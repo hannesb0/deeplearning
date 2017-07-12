@@ -3,12 +3,22 @@ To think about:
 ===============
 
 - division of TTS system in front- and backend
+
 - conclusion of section 4.2 (optimized HMM) -> if presented
+
 - Version of functional diagram -> more basic & and only synthesis part ??
-- What is a HMM?
+
+- What is a HMM? -> Deep Learning for Acoustic Modeling in Parametric Speech Generation: A systematic review of existing techniques and future trends
+
 - What is auto encoder? -> if presented this paper
+
 - Bring up MLPG (Maximum Likelyhood Parameter Generation)
+
 - Bring up Decision Trees
+
+
+
+
 
 
 Tips from Debayan:
