@@ -8,13 +8,15 @@ To think about:
 
 - Version of functional diagram -> more basic & and only synthesis part ??
 
+- Acoustic model ???
+
 - What is a HMM? -> Deep Learning for Acoustic Modeling in Parametric Speech Generation: A systematic review of existing techniques and future trends
 
 - What is auto encoder? -> if presented this paper
 
-- Bring up MLPG (Maximum Likelyhood Parameter Generation)
+- Bring up MLPG (Maximum Likelyhood Parameter Generation) -> if presented
 
-- Bring up Decision Trees
+- Bring up Decision Trees -> if presented
 
 
 
