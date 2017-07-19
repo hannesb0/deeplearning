@@ -1,2 +1,6 @@
 
-intro-01.wav:	https://lingojam.com/StephenHawkingVoiceGenerator
+intro-01.wav:			https://lingojam.com/StephenHawkingVoiceGenerator
+
+hmm-demo-01.wav			http://www.festvox.org/voicedemos.html
+
+hmm-demo-02(b).wav		http://flite-hts-engine.sp.nitech.ac.jp/index.php
