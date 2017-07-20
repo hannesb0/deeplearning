@@ -1,0 +1,3 @@
+<speak>This is an example of concatenative speech synthesis using deep learning models in the back-end. <break time="2s"/> Thank you for your attention! I am now looking forward to answering your questions! </speak>
+
+<speak>This is an example of concatenative speech synthesis using deep learning models in the back-end. <break time="2s"/> <express-as type="GoodNews">Thank you for your attention! I am now looking forward to answering your questions! </express-as></speak>

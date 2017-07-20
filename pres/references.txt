@@ -4,3 +4,7 @@ intro-01.wav:			https://lingojam.com/StephenHawkingVoiceGenerator
 hmm-demo-01.wav			http://www.festvox.org/voicedemos.html
 
 hmm-demo-02(b).wav		http://flite-hts-engine.sp.nitech.ac.jp/index.php
+
+outro-01.ogg			https://text-to-speech-demo.mybluemix.net/
+						https://www.ibm.com/watson/developercloud/doc/text-to-speech/science.html
+						-> Concatenative Synthesis with Deep Recurrent Neural Network used as prosody target models (backend)
